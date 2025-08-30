@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek/Klasifikasi_Lulus';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Resume - [Nama Lengkap Anda]" href="../resume.html" />
+    <link rel="prev" title="Tentang Saya &amp; Keahlian Teknis" href="../resume.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,17 +168,18 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Selamat Datang di Portofolio Saya!
+                    Selamat Datang di Jurnal Proyek Data Science Saya
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tentang Saya</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume - [Nama Lengkap Anda]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Tentang Saya &amp; Keahlian Teknis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Proyek-Proyek Saya</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning</a></li>
+
 </ul>
 
     </div>
@@ -327,6 +328,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-memuat-data">Import Library dan Memuat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data">Memuat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dan-pemahaman-data-eda">Eksplorasi dan Pemahaman Data (EDA)</a><ul class="nav section-nav flex-column">
@@ -357,8 +359,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-penting-feature-importance">Analisis Fitur Penting (Feature Importance)</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -2342,6 +2350,21 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </ul>
 </section>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
+<h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<p>Ringkasan Proyek
+Proyek ini bertujuan untuk membangun sebuah model klasifikasi machine learning untuk memprediksi status kelulusan calon mahasiswa berdasarkan data pendaftaran. Prosesnya meliputi pembersihan data, eksplorasi melalui visualisasi, dan pembangunan model menggunakan RandomForestClassifier. Tantangan utama yang diidentifikasi sejak awal adalah adanya ketidakseimbangan kelas yang ekstrem dalam dataset.</p>
+<p>Temuan Kunci</p>
+<p>Kinerja Model yang Bervariasi: Model akhir menunjukkan akurasi keseluruhan yang tinggi (~90%), namun metrik ini bersifat menyesatkan.</p>
+<p>✅ Sangat Efektif untuk memprediksi kelas Tidak Lulus (F1-score ~0.94).</p>
+<p>✅ Cukup Efektif untuk memprediksi kelas Lulus Pilihan 1 (F1-score ~0.78).</p>
+<p>❌ Gagal Total untuk memprediksi kelas Lulus Pilihan 2, bahkan setelah penanganan dengan metode SMOTE.</p>
+<p>Tantangan Utama adalah Imbalance Ekstrem: Kegagalan model pada kelas Lulus Pilihan 2 secara konsisten menunjukkan bahwa jumlah sampel untuk kelas tersebut terlalu sedikit. Akibatnya, sinyal atau pola dari data ini terlalu lemah untuk dapat dipelajari secara efektif oleh algoritma.</p>
+<p>Ketergantungan pada Fitur Misterius: Analisis kepentingan fitur secara konsisten menunjukkan bahwa model sangat bergantung pada serangkaian fitur yang tidak dapat diinterpretasikan (X1, X2, XT, dll.). Meskipun fitur ini memiliki daya prediksi yang kuat, maknanya yang tidak diketahui menjadikan model ini sebagai “kotak hitam” (black box), sehingga sulit untuk memvalidasi proses pengambilan keputusannya.</p>
+<p>Kesimpulan Akhir
+Proyek ini berhasil mengembangkan model yang mampu membedakan dengan andal antara calon mahasiswa yang kemungkinan besar tidak akan lulus dengan mereka yang berpotensi lulus di pilihan pertama.</p>
+<p>Namun, model ini tidak dapat diandalkan untuk memprediksi kelulusan di pilihan kedua karena keterbatasan data. Selain itu, kurangnya transparansi akibat ketergantungan pada fitur yang tidak dapat diinterpretasikan menjadi batasan utama untuk penggunaan model ini dalam pengambilan keputusan di dunia nyata.</p>
 <section id="id1">
 <h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
@@ -2383,7 +2406,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Resume - [Nama Lengkap Anda]</p>
+        <p class="prev-next-title">Tentang Saya &amp; Keahlian Teknis</p>
       </div>
     </a>
 </div>
@@ -2402,6 +2425,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-memuat-data">Import Library dan Memuat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data">Memuat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dan-pemahaman-data-eda">Eksplorasi dan Pemahaman Data (EDA)</a><ul class="nav section-nav flex-column">
@@ -2432,8 +2456,14 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-penting-feature-importance">Analisis Fitur Penting (Feature Importance)</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
