@@ -1,0 +1,1576 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek/Multivariate Tumbling window';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Jupyter Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Selamat Datang di Portofolio Saya!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tentang Saya</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume - [Nama Lengkap Anda]</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Proyek-Proyek Saya</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Lulus.html"></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Proyek/Multivariate Tumbling window.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1"># Umumnya tetap berguna</span>
+
+<span class="c1"># URL untuk dataset multivariate Anda</span>
+<span class="n">url_multivariate</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/adamzakys/SourceFiles/refs/heads/main/DatasetFinal/Dataset%20After%20Preprocessing/df_multivariate.csv&quot;</span>
+
+<span class="c1"># Membaca CSV dan menjadikan &#39;Tanggal&#39; sebagai datetime, lalu urutkan</span>
+<span class="n">df_multi_nw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_multivariate</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">])</span> <span class="c1"># _nw untuk non-windowing</span>
+<span class="n">df_multi_nw</span> <span class="o">=</span> <span class="n">df_multi_nw</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df_multi_nw (Multivariate Non-Windowing) berhasil dimuat:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_multi_nw</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk df_multi_nw: </span><span class="si">{</span><span class="n">df_multi_nw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kolom df_multi_nw: </span><span class="si">{</span><span class="n">df_multi_nw</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_multi_nw (Multivariate Non-Windowing) berhasil dimuat:
+     Tanggal     Price      Open      High       Low      Vol.  Change %  \
+0 2018-01-01  0.099273  0.103213  0.101362  0.094943  0.000017  0.618706   
+1 2018-01-02  0.111995  0.099272  0.114553  0.095496  0.000031  0.834955   
+2 2018-01-03  0.115906  0.111994  0.115781  0.111601  0.000024  0.715310   
+3 2018-01-04  0.116134  0.115904  0.115531  0.108323  0.000025  0.671275   
+4 2018-01-05  0.133379  0.116133  0.131900  0.114074  0.000032  0.868237   
+
+   EUR_German Unemployment Rate  CNY_CPI (YoY)  \
+0                           0.4       0.419355   
+1                           0.4       0.419355   
+2                           0.4       0.419355   
+3                           0.4       0.419355   
+4                           0.4       0.419355   
+
+   JPY_BoJ Interest Rate Decision  ...  USD_Core PCE Prices  \
+0                             0.0  ...             0.416667   
+1                             0.0  ...             0.416667   
+2                             0.0  ...             0.416667   
+3                             0.0  ...             0.416667   
+4                             0.0  ...             0.416667   
+
+   USD_Core PCE Price Index (YoY)  JPY_BoJ Core CPI (YoY)  \
+0                        0.133333                0.341463   
+1                        0.133333                0.341463   
+2                        0.133333                0.341463   
+3                        0.133333                0.341463   
+4                        0.133333                0.341463   
+
+   USD_Fed Interest Rate Decision  GBP_BoE Interest Rate Decision  \
+0                        0.238095                         0.07767   
+1                        0.238095                         0.07767   
+2                        0.238095                         0.07767   
+3                        0.238095                         0.07767   
+4                        0.238095                         0.07767   
+
+   JPY_GDP Price Index (YoY)  USD_Interest Rate Projection - Longer  \
+0                    0.19697                               0.166667   
+1                    0.19697                               0.166667   
+2                    0.19697                               0.166667   
+3                    0.19697                               0.166667   
+4                    0.19697                               0.166667   
+
+   CNY_PBoC Loan Prime Rate  CNY_China Loan Prime Rate 5Y  \
+0                       1.0                           1.0   
+1                       1.0                           1.0   
+2                       1.0                           1.0   
+3                       1.0                           1.0   
+4                       1.0                           1.0   
+
+   USD_Atlanta Fed GDPNow  
+0                0.366667  
+1                0.366667  
+2                0.366667  
+3                0.366667  
+4                0.366667  
+
+[5 rows x 21 columns]
+Bentuk df_multi_nw: (2557, 21)
+Kolom df_multi_nw: [&#39;Tanggal&#39;, &#39;Price&#39;, &#39;Open&#39;, &#39;High&#39;, &#39;Low&#39;, &#39;Vol.&#39;, &#39;Change %&#39;, &#39;EUR_German Unemployment Rate&#39;, &#39;CNY_CPI (YoY)&#39;, &#39;JPY_BoJ Interest Rate Decision&#39;, &#39;GBP_Unemployment Rate&#39;, &#39;USD_Core PCE Prices&#39;, &#39;USD_Core PCE Price Index (YoY)&#39;, &#39;JPY_BoJ Core CPI (YoY)&#39;, &#39;USD_Fed Interest Rate Decision&#39;, &#39;GBP_BoE Interest Rate Decision&#39;, &#39;JPY_GDP Price Index (YoY)&#39;, &#39;USD_Interest Rate Projection - Longer&#39;, &#39;CNY_PBoC Loan Prime Rate&#39;, &#39;CNY_China Loan Prime Rate 5Y&#39;, &#39;USD_Atlanta Fed GDPNow&#39;]
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi split_dataframe_minimal (SAMA SEPERTI SEBELUMNYA, bisa Anda definisikan sekali saja di awal notebook)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">split_dataframe_minimal</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">train_ratio</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">val_ratio</span><span class="o">=</span><span class="mf">0.10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Membagi DataFrame menjadi train, val, dan test secara kronologis (minimalis).&quot;&quot;&quot;</span>
+    <span class="n">total_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">train_end_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_rows</span> <span class="o">*</span> <span class="n">train_ratio</span><span class="p">)</span>
+    <span class="n">val_end_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_rows</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">val_ratio</span><span class="p">))</span>
+
+    <span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_end_idx</span><span class="p">]</span>
+    <span class="n">val_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_end_idx</span><span class="p">:</span><span class="n">val_end_idx</span><span class="p">]</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_end_idx</span><span class="p">:]</span>
+    
+    <span class="k">return</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">val_df</span><span class="p">,</span> <span class="n">test_df</span>
+
+<span class="c1"># Panggil fungsi split untuk df_multi_nw</span>
+<span class="c1"># Pastikan df_multi_nw sudah dimuat dari Blok 1</span>
+<span class="k">if</span> <span class="s1">&#39;df_multi_nw&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">df_multi_nw</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">train_df_mnw</span><span class="p">,</span> <span class="n">val_df_mnw</span><span class="p">,</span> <span class="n">test_df_mnw</span> <span class="o">=</span> <span class="n">split_dataframe_minimal</span><span class="p">(</span><span class="n">df_multi_nw</span><span class="p">)</span> <span class="c1"># _mnw untuk multivariate non-windowing</span>
+
+    <span class="c1"># Cek hasilnya dengan informasi tanggal</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pembagian DataFrame berhasil (Multivariate Non-Windowing):&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">train_df_mnw</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">train_start_date</span> <span class="o">=</span> <span class="n">train_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">train_end_date</span> <span class="o">=</span> <span class="n">train_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Training   : </span><span class="si">{</span><span class="n">train_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris, dari </span><span class="si">{</span><span class="n">train_start_date</span><span class="si">}</span><span class="s2"> s.d. </span><span class="si">{</span><span class="n">train_end_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Training   : </span><span class="si">{</span><span class="n">train_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">val_df_mnw</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">val_start_date</span> <span class="o">=</span> <span class="n">val_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">val_end_date</span> <span class="o">=</span> <span class="n">val_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Validation : </span><span class="si">{</span><span class="n">val_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris, dari </span><span class="si">{</span><span class="n">val_start_date</span><span class="si">}</span><span class="s2"> s.d. </span><span class="si">{</span><span class="n">val_end_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Validation : </span><span class="si">{</span><span class="n">val_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">test_df_mnw</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">test_start_date</span> <span class="o">=</span> <span class="n">test_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">test_end_date</span> <span class="o">=</span> <span class="n">test_df_mnw</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Testing    : </span><span class="si">{</span><span class="n">test_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris, dari </span><span class="si">{</span><span class="n">test_start_date</span><span class="si">}</span><span class="s2"> s.d. </span><span class="si">{</span><span class="n">test_end_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Testing    : </span><span class="si">{</span><span class="n">test_df_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+        
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataFrame df_multi_nw belum dimuat atau kosong. Pembagian data tidak dilakukan.&quot;</span><span class="p">)</span>
+    <span class="c1"># Inisialisasi agar variabel ada jika df_multi_nw gagal dimuat</span>
+    <span class="n">train_df_mnw</span><span class="p">,</span> <span class="n">val_df_mnw</span><span class="p">,</span> <span class="n">test_df_mnw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pembagian DataFrame berhasil (Multivariate Non-Windowing):
+- Training   : 2173 baris, dari 2018-01-01 s.d. 2023-12-13
+- Validation : 256 baris, dari 2023-12-14 s.d. 2024-08-25
+- Testing    : 128 baris, dari 2024-08-26 s.d. 2024-12-31
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Blok 3: Persiapan Sekuens Input (X) dan Target (y)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Fungsi ini sekarang membuat &quot;window&quot; untuk data multivariat</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_sequences_windowed_mv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">feature_cols</span><span class="p">,</span> <span class="n">target_col</span><span class="p">,</span> <span class="n">date_col</span><span class="p">,</span> 
+                                  <span class="n">n_input_steps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_output_steps</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mempersiapkan sekuens X (data historis 30 hari) dan y (target 30 hari ke depan)</span>
+<span class="sd">    dari data multivariat.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">dates_X_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    
+    <span class="n">num_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_rows</span> <span class="o">-</span> <span class="n">n_input_steps</span> <span class="o">-</span> <span class="n">n_output_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        
+        <span class="c1"># Mengambil potongan 30 hari dari SEMUA fitur untuk input X</span>
+        <span class="n">X_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n_input_steps</span><span class="p">][</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        
+        <span class="c1"># Mengambil potongan 30 hari dari SATU fitur target (&#39;Price&#39;) untuk output y</span>
+        <span class="n">y_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">n_input_steps</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n_input_steps</span> <span class="o">+</span> <span class="n">n_output_steps</span><span class="p">][</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_sample</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_input_steps</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_sample</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_output_steps</span><span class="p">:</span>
+            <span class="n">X_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_sample</span><span class="p">)</span>
+            <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_sample</span><span class="p">)</span>
+            <span class="n">dates_X_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">n_input_steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">date_col</span><span class="p">])</span> 
+            
+    <span class="n">X_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">y_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">dates_X_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dates_X_list</span><span class="p">)</span>
+    
+    <span class="c1"># Bentuk X_np sudah otomatis menjadi (sampel, 30, 20), tidak perlu reshape lagi</span>
+    <span class="k">return</span> <span class="n">X_np</span><span class="p">,</span> <span class="n">y_np</span><span class="p">,</span> <span class="n">dates_X_np</span>
+
+<span class="c1"># --- Aplikasi untuk Skenario Multivariat (Windowing) ---</span>
+
+<span class="c1"># Definisikan parameter (Sama seperti kode asli Anda)</span>
+<span class="n">all_cols_mnw</span> <span class="o">=</span> <span class="n">df_multi_nw</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">feature_cols_mnw</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">all_cols_mnw</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">&#39;Tanggal&#39;</span><span class="p">]</span> <span class="c1"># Menggunakan variabel asli Anda</span>
+<span class="n">target_col_name</span> <span class="o">=</span> <span class="s1">&#39;Price&#39;</span>
+<span class="n">date_col_name</span> <span class="o">=</span> <span class="s1">&#39;Tanggal&#39;</span>
+<span class="n">N_INPUT_DAYS</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">N_OUTPUT_DAYS</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="c1"># Inisialisasi variabel (Sama seperti kode asli Anda)</span>
+<span class="n">X_train_lstm_mnw</span><span class="p">,</span> <span class="n">y_train_mnw</span><span class="p">,</span> <span class="n">X_val_lstm_mnw</span><span class="p">,</span> <span class="n">y_val_mnw</span><span class="p">,</span> <span class="n">X_test_lstm_mnw</span><span class="p">,</span> <span class="n">y_test_mnw</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])]</span> <span class="o">*</span> <span class="mi">6</span>
+
+<span class="c1"># Pastikan DataFrame hasil split tidak kosong</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">train_df_mnw</span><span class="o">.</span><span class="n">empty</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">val_df_mnw</span><span class="o">.</span><span class="n">empty</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">test_df_mnw</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    
+    <span class="c1"># Panggil fungsi windowing yang baru</span>
+    <span class="n">X_train_lstm_mnw</span><span class="p">,</span> <span class="n">y_train_mnw</span><span class="p">,</span> <span class="n">dates_X_train_mnw</span> <span class="o">=</span> <span class="n">prepare_sequences_windowed_mv</span><span class="p">(</span>
+        <span class="n">train_df_mnw</span><span class="p">,</span> <span class="n">feature_cols_mnw</span><span class="p">,</span> <span class="n">target_col_name</span><span class="p">,</span> <span class="n">date_col_name</span><span class="p">,</span> 
+        <span class="n">n_input_steps</span><span class="o">=</span><span class="n">N_INPUT_DAYS</span><span class="p">,</span> <span class="n">n_output_steps</span><span class="o">=</span><span class="n">N_OUTPUT_DAYS</span>
+    <span class="p">)</span>
+    <span class="n">X_val_lstm_mnw</span><span class="p">,</span> <span class="n">y_val_mnw</span><span class="p">,</span> <span class="n">dates_X_val_mnw</span> <span class="o">=</span> <span class="n">prepare_sequences_windowed_mv</span><span class="p">(</span>
+        <span class="n">val_df_mnw</span><span class="p">,</span> <span class="n">feature_cols_mnw</span><span class="p">,</span> <span class="n">target_col_name</span><span class="p">,</span> <span class="n">date_col_name</span><span class="p">,</span> 
+        <span class="n">n_input_steps</span><span class="o">=</span><span class="n">N_INPUT_DAYS</span><span class="p">,</span> <span class="n">n_output_steps</span><span class="o">=</span><span class="n">N_OUTPUT_DAYS</span>
+    <span class="p">)</span>
+    <span class="n">X_test_lstm_mnw</span><span class="p">,</span> <span class="n">y_test_mnw</span><span class="p">,</span> <span class="n">dates_X_test_mnw</span> <span class="o">=</span> <span class="n">prepare_sequences_windowed_mv</span><span class="p">(</span>
+        <span class="n">test_df_mnw</span><span class="p">,</span> <span class="n">feature_cols_mnw</span><span class="p">,</span> <span class="n">target_col_name</span><span class="p">,</span> <span class="n">date_col_name</span><span class="p">,</span> 
+        <span class="n">n_input_steps</span><span class="o">=</span><span class="n">N_INPUT_DAYS</span><span class="p">,</span> <span class="n">n_output_steps</span><span class="o">=</span><span class="n">N_OUTPUT_DAYS</span>
+    <span class="p">)</span>
+
+    <span class="c1"># --- BLOK RESHAPE DIHAPUS ---</span>
+    <span class="c1"># Karena data sudah 3D (sampel, 30, 20) dari fungsi di atas.</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Persiapan sekuens untuk model LSTM Multivariat (Windowing) Selesai:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Training   X: </span><span class="si">{</span><span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">y_train_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Validation X: </span><span class="si">{</span><span class="n">X_val_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">y_val_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Testing    X: </span><span class="si">{</span><span class="n">X_test_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">y_test_mnw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salah satu DataFrame (train, val, test) kosong. Proses persiapan sekuens dilewati.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Persiapan sekuens untuk model LSTM Multivariat (Windowing) Selesai:
+- Training   X: (2114, 30, 20), y: (2114, 30)
+- Validation X: (197, 30, 20), y: (197, 30)
+- Testing    X: (69, 30, 20), y: (69, 30)
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">EarlyStopping</span>
+
+<span class="c1"># Fungsi untuk mengatur random seed agar hasil bisa direproduksi</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_seeds</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONHASHSEED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">enable_op_determinism</span><span class="p">()</span>
+
+<span class="c1"># Panggil fungsi ini untuk memastikan konsistensi</span>
+<span class="n">set_seeds</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random seed telah diatur untuk memastikan hasil yang dapat direproduksi.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_lstm_model</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">num_units</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Membangun arsitektur model LSTM.&quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+        <span class="n">LSTM</span><span class="p">(</span><span class="n">num_units</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">),</span>
+        <span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">),</span>
+        <span class="n">LSTM</span><span class="p">(</span><span class="n">num_units</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">),</span>
+        <span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">),</span>
+        <span class="n">Dense</span><span class="p">(</span><span class="n">output_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+    <span class="p">])</span>
+    
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mse&#39;</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fungsi build_lstm_model berhasil didefinisikan.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random seed telah diatur untuk memastikan hasil yang dapat direproduksi.
+Fungsi build_lstm_model berhasil didefinisikan.
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">EarlyStopping</span>
+
+<span class="c1"># Ruang pencarian hyperparameter (final)</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span>
+    <span class="s1">&#39;dropout_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Epochs maksimal dan patience untuk EarlyStopping (final)</span>
+<span class="n">EPOCHS_MAX</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">PATIENCE</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># Menggunakan nilai patience yang telah kita diskusikan</span>
+
+<span class="c1"># Buat semua kombinasi dari hyperparameter</span>
+<span class="n">all_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span>
+    <span class="n">param_grid</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">],</span>
+    <span class="n">param_grid</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">],</span>
+    <span class="n">param_grid</span><span class="p">[</span><span class="s1">&#39;batch_size&#39;</span><span class="p">],</span>
+    <span class="n">param_grid</span><span class="p">[</span><span class="s1">&#39;dropout_rate&#39;</span><span class="p">]</span>
+<span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total kombinasi hyperparameter yang akan diuji: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_combinations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># List untuk menyimpan hasil dari setiap kombinasi</span>
+<span class="n">history_results_mnw</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Pastikan data training ada sebelum memulai loop</span>
+<span class="k">if</span> <span class="s1">&#39;X_train_lstm_mnw&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="ow">and</span> <span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># Loop untuk grid search</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_combinations</span><span class="p">):</span>
+        <span class="n">units</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="n">params</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Menguji Kombinasi </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_combinations</span><span class="p">)</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Params: Units=</span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">, LR=</span><span class="si">{</span><span class="n">lr</span><span class="si">}</span><span class="s2">, BatchSize=</span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">, Dropout=</span><span class="si">{</span><span class="n">dropout</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Bangun model dengan hyperparameter saat ini</span>
+        <span class="c1"># Input shape untuk multivariat non-windowing adalah (1, jumlah_fitur)</span>
+        <span class="n">model_mnw</span> <span class="o">=</span> <span class="n">build_lstm_model</span><span class="p">(</span>
+            <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+            <span class="n">output_size</span><span class="o">=</span><span class="n">y_train_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">num_units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span>
+            <span class="n">dropout_rate</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+            <span class="n">learning_rate</span><span class="o">=</span><span class="n">lr</span>
+        <span class="p">)</span>
+
+        <span class="n">early_stopping</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">PATIENCE</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">history</span> <span class="o">=</span> <span class="n">model_mnw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">X_train_lstm_mnw</span><span class="p">,</span> <span class="n">y_train_mnw</span><span class="p">,</span>
+            <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS_MAX</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val_lstm_mnw</span><span class="p">,</span> <span class="n">y_val_mnw</span><span class="p">),</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">early_stopping</span><span class="p">],</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        
+        <span class="n">best_val_loss</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
+        <span class="n">actual_epochs</span> <span class="o">=</span> <span class="n">early_stopping</span><span class="o">.</span><span class="n">stopped_epoch</span> <span class="k">if</span> <span class="n">early_stopping</span><span class="o">.</span><span class="n">stopped_epoch</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">EPOCHS_MAX</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selesai pada epoch: </span><span class="si">{</span><span class="n">actual_epochs</span><span class="si">}</span><span class="s2">. Val Loss Terbaik: </span><span class="si">{</span><span class="n">best_val_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">history_results_mnw</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;combination&#39;</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">,</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
+            <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
+            <span class="s1">&#39;dropout_rate&#39;</span><span class="p">:</span> <span class="n">dropout</span><span class="p">,</span>
+            <span class="s1">&#39;best_val_loss&#39;</span><span class="p">:</span> <span class="n">best_val_loss</span><span class="p">,</span>
+            <span class="s1">&#39;stopped_epoch&#39;</span><span class="p">:</span> <span class="n">actual_epochs</span>
+        <span class="p">})</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Pencarian Hyperparameter Selesai ---&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variabel data training (X_train_lstm_mnw) tidak ditemukan atau kosong. Proses dilewati.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total kombinasi hyperparameter yang akan diuji: 54
+
+--- Menguji Kombinasi 1/54 ---
+Params: Units=50, LR=0.0001, BatchSize=16, Dropout=0.1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\experiment after testing - Copy\Code Penelitian new\.venv\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai pada epoch: 102. Val Loss Terbaik: 0.013319
+
+--- Menguji Kombinasi 2/54 ---
+Params: Units=50, LR=0.0001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 27. Val Loss Terbaik: 0.037704
+
+--- Menguji Kombinasi 3/54 ---
+Params: Units=50, LR=0.0001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 37. Val Loss Terbaik: 0.015267
+
+--- Menguji Kombinasi 4/54 ---
+Params: Units=50, LR=0.0001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 60. Val Loss Terbaik: 0.028675
+
+--- Menguji Kombinasi 5/54 ---
+Params: Units=50, LR=0.0001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 90. Val Loss Terbaik: 0.031846
+
+--- Menguji Kombinasi 6/54 ---
+Params: Units=50, LR=0.0001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 111. Val Loss Terbaik: 0.024474
+
+--- Menguji Kombinasi 7/54 ---
+Params: Units=50, LR=0.001, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 21. Val Loss Terbaik: 0.008698
+
+--- Menguji Kombinasi 8/54 ---
+Params: Units=50, LR=0.001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 21. Val Loss Terbaik: 0.014950
+
+--- Menguji Kombinasi 9/54 ---
+Params: Units=50, LR=0.001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 46. Val Loss Terbaik: 0.009686
+
+--- Menguji Kombinasi 10/54 ---
+Params: Units=50, LR=0.001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 40. Val Loss Terbaik: 0.008492
+
+--- Menguji Kombinasi 11/54 ---
+Params: Units=50, LR=0.001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 38. Val Loss Terbaik: 0.011910
+
+--- Menguji Kombinasi 12/54 ---
+Params: Units=50, LR=0.001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 35. Val Loss Terbaik: 0.010896
+
+--- Menguji Kombinasi 13/54 ---
+Params: Units=50, LR=0.01, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 15. Val Loss Terbaik: 0.106780
+
+--- Menguji Kombinasi 14/54 ---
+Params: Units=50, LR=0.01, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 15. Val Loss Terbaik: 0.096148
+
+--- Menguji Kombinasi 15/54 ---
+Params: Units=50, LR=0.01, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 17. Val Loss Terbaik: 0.087150
+
+--- Menguji Kombinasi 16/54 ---
+Params: Units=50, LR=0.01, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 17. Val Loss Terbaik: 0.095449
+
+--- Menguji Kombinasi 17/54 ---
+Params: Units=50, LR=0.01, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 19. Val Loss Terbaik: 0.006617
+
+--- Menguji Kombinasi 18/54 ---
+Params: Units=50, LR=0.01, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 20. Val Loss Terbaik: 0.019105
+
+--- Menguji Kombinasi 19/54 ---
+Params: Units=75, LR=0.0001, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 68. Val Loss Terbaik: 0.025917
+
+--- Menguji Kombinasi 20/54 ---
+Params: Units=75, LR=0.0001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 84. Val Loss Terbaik: 0.026479
+
+--- Menguji Kombinasi 21/54 ---
+Params: Units=75, LR=0.0001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 42. Val Loss Terbaik: 0.014203
+
+--- Menguji Kombinasi 22/54 ---
+Params: Units=75, LR=0.0001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 28. Val Loss Terbaik: 0.016917
+
+--- Menguji Kombinasi 23/54 ---
+Params: Units=75, LR=0.0001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 33. Val Loss Terbaik: 0.027162
+
+--- Menguji Kombinasi 24/54 ---
+Params: Units=75, LR=0.0001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 69. Val Loss Terbaik: 0.028600
+
+--- Menguji Kombinasi 25/54 ---
+Params: Units=75, LR=0.001, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 23. Val Loss Terbaik: 0.018236
+
+--- Menguji Kombinasi 26/54 ---
+Params: Units=75, LR=0.001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 22. Val Loss Terbaik: 0.024013
+
+--- Menguji Kombinasi 27/54 ---
+Params: Units=75, LR=0.001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 36. Val Loss Terbaik: 0.009055
+
+--- Menguji Kombinasi 28/54 ---
+Params: Units=75, LR=0.001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 37. Val Loss Terbaik: 0.013325
+
+--- Menguji Kombinasi 29/54 ---
+Params: Units=75, LR=0.001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 17. Val Loss Terbaik: 0.016749
+
+--- Menguji Kombinasi 30/54 ---
+Params: Units=75, LR=0.001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 31. Val Loss Terbaik: 0.009992
+
+--- Menguji Kombinasi 31/54 ---
+Params: Units=75, LR=0.01, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 15. Val Loss Terbaik: 0.088859
+
+--- Menguji Kombinasi 32/54 ---
+Params: Units=75, LR=0.01, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 15. Val Loss Terbaik: 0.106780
+
+--- Menguji Kombinasi 33/54 ---
+Params: Units=75, LR=0.01, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 16. Val Loss Terbaik: 0.089535
+
+--- Menguji Kombinasi 34/54 ---
+Params: Units=75, LR=0.01, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 18. Val Loss Terbaik: 0.085292
+
+--- Menguji Kombinasi 35/54 ---
+Params: Units=75, LR=0.01, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 18. Val Loss Terbaik: 0.009932
+
+--- Menguji Kombinasi 36/54 ---
+Params: Units=75, LR=0.01, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 21. Val Loss Terbaik: 0.007281
+
+--- Menguji Kombinasi 37/54 ---
+Params: Units=100, LR=0.0001, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 19. Val Loss Terbaik: 0.029438
+
+--- Menguji Kombinasi 38/54 ---
+Params: Units=100, LR=0.0001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 19. Val Loss Terbaik: 0.030833
+
+--- Menguji Kombinasi 39/54 ---
+Params: Units=100, LR=0.0001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 24. Val Loss Terbaik: 0.011035
+
+--- Menguji Kombinasi 40/54 ---
+Params: Units=100, LR=0.0001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 43. Val Loss Terbaik: 0.010242
+
+--- Menguji Kombinasi 41/54 ---
+Params: Units=100, LR=0.0001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 57. Val Loss Terbaik: 0.017680
+
+--- Menguji Kombinasi 42/54 ---
+Params: Units=100, LR=0.0001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 70. Val Loss Terbaik: 0.021924
+
+--- Menguji Kombinasi 43/54 ---
+Params: Units=100, LR=0.001, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 24. Val Loss Terbaik: 0.009822
+
+--- Menguji Kombinasi 44/54 ---
+Params: Units=100, LR=0.001, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 22. Val Loss Terbaik: 0.010880
+
+--- Menguji Kombinasi 45/54 ---
+Params: Units=100, LR=0.001, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 19. Val Loss Terbaik: 0.011364
+
+--- Menguji Kombinasi 46/54 ---
+Params: Units=100, LR=0.001, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 21. Val Loss Terbaik: 0.011530
+
+--- Menguji Kombinasi 47/54 ---
+Params: Units=100, LR=0.001, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 18. Val Loss Terbaik: 0.010525
+
+--- Menguji Kombinasi 48/54 ---
+Params: Units=100, LR=0.001, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 32. Val Loss Terbaik: 0.009869
+
+--- Menguji Kombinasi 49/54 ---
+Params: Units=100, LR=0.01, BatchSize=16, Dropout=0.1
+Selesai pada epoch: 15. Val Loss Terbaik: 0.099989
+
+--- Menguji Kombinasi 50/54 ---
+Params: Units=100, LR=0.01, BatchSize=16, Dropout=0.2
+Selesai pada epoch: 16. Val Loss Terbaik: 0.097125
+
+--- Menguji Kombinasi 51/54 ---
+Params: Units=100, LR=0.01, BatchSize=32, Dropout=0.1
+Selesai pada epoch: 15. Val Loss Terbaik: 0.076689
+
+--- Menguji Kombinasi 52/54 ---
+Params: Units=100, LR=0.01, BatchSize=32, Dropout=0.2
+Selesai pada epoch: 15. Val Loss Terbaik: 0.081230
+
+--- Menguji Kombinasi 53/54 ---
+Params: Units=100, LR=0.01, BatchSize=64, Dropout=0.1
+Selesai pada epoch: 20. Val Loss Terbaik: 0.013597
+
+--- Menguji Kombinasi 54/54 ---
+Params: Units=100, LR=0.01, BatchSize=64, Dropout=0.2
+Selesai pada epoch: 43. Val Loss Terbaik: 0.004455
+
+--- Pencarian Hyperparameter Selesai ---
+</pre></div>
+</div>
+</div>
+</div>
+<p>Blok 6: Analisis Hasil Pencarian Hyperparameter &amp; Penyimpanan ke CSV</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Pastikan history_results_mnw dari blok sebelumnya sudah terisi</span>
+<span class="k">if</span> <span class="s1">&#39;history_results_mnw&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="ow">and</span> <span class="n">history_results_mnw</span><span class="p">:</span>
+    <span class="c1"># Konversi hasil ke DataFrame untuk analisis mudah</span>
+    <span class="n">results_df_mnw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history_results_mnw</span><span class="p">)</span>
+    
+    <span class="c1"># Urutkan DataFrame berdasarkan validation loss terbaik (terendah)</span>
+    <span class="n">results_df_mnw</span> <span class="o">=</span> <span class="n">results_df_mnw</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;best_val_loss&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Analisis Hasil Pencarian Hyperparameter (Multivariat Non-Windowing) ---&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 5 Kombinasi Hyperparameter Terbaik (berdasarkan Validation Loss):&quot;</span><span class="p">)</span>
+    <span class="c1"># Menggunakan .to_string() agar semua kolom ditampilkan dengan rapi</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results_df_mnw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+    <span class="c1"># Menyimpan hasil lengkap ke file CSV untuk dokumentasi</span>
+    <span class="n">output_filename_mnw</span> <span class="o">=</span> <span class="s1">&#39;grid_search_results_multivariate_nonwindowing.csv&#39;</span>
+    <span class="n">results_df_mnw</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_filename_mnw</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil lengkap dari </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_combinations</span><span class="p">)</span><span class="si">}</span><span class="s2"> kombinasi disimpan ke &#39;</span><span class="si">{</span><span class="n">output_filename_mnw</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tidak ada hasil pencarian hyperparameter (history_results_mnw) untuk dianalisis.&quot;</span><span class="p">)</span>
+    <span class="c1"># Inisialisasi results_df_mnw kosong jika tidak ada hasil</span>
+    <span class="n">results_df_mnw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Analisis Hasil Pencarian Hyperparameter (Multivariat Non-Windowing) ---
+
+Top 5 Kombinasi Hyperparameter Terbaik (berdasarkan Validation Loss):
+    combination  units  learning_rate  batch_size  dropout_rate  best_val_loss  stopped_epoch
+53           54    100          0.010          64           0.2       0.004455             43
+16           17     50          0.010          64           0.1       0.006617             19
+35           36     75          0.010          64           0.2       0.007281             21
+9            10     50          0.001          32           0.2       0.008492             40
+6             7     50          0.001          16           0.1       0.008698             21
+
+Hasil lengkap dari 54 kombinasi disimpan ke &#39;grid_search_results_multivariate_nonwindowing.csv&#39;
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelCheckpoint</span><span class="p">,</span> <span class="n">EarlyStopping</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+
+<span class="c1"># Nama file CSV tempat hasil grid search disimpan</span>
+<span class="n">grid_search_results_file</span> <span class="o">=</span> <span class="s1">&#39;grid_search_results_multivariate_nonwindowing.csv&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 1. Muat hasil grid search dari file CSV</span>
+    <span class="n">results_df_mnw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">grid_search_results_file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil grid search berhasil dimuat dari &#39;</span><span class="si">{</span><span class="n">grid_search_results_file</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 2. Ambil hyperparameter terbaik dari baris pertama (diasumsikan sudah terurut)</span>
+    <span class="n">best_params_mnw</span> <span class="o">=</span> <span class="n">results_df_mnw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hyperparameter Terbaik Terpilih ---&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">best_params_mnw</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># 3. Bangun dan Latih Model Final</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Membangun model final dengan hyperparameter terbaik...&quot;</span><span class="p">)</span>
+    <span class="n">final_model_mnw</span> <span class="o">=</span> <span class="n">build_lstm_model</span><span class="p">(</span>
+        <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_train_lstm_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+        <span class="n">output_size</span><span class="o">=</span><span class="n">y_train_mnw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">num_units</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">best_params_mnw</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]),</span>
+        <span class="n">dropout_rate</span><span class="o">=</span><span class="n">best_params_mnw</span><span class="p">[</span><span class="s1">&#39;dropout_rate&#39;</span><span class="p">],</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">best_params_mnw</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">final_model_mnw</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+    <span class="c1"># Definisikan callbacks</span>
+    <span class="n">final_model_path_mnw</span> <span class="o">=</span> <span class="s1">&#39;final_model_multivariate_nonwindowing.h5&#39;</span>
+    <span class="n">early_stopping_final</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">PATIENCE</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">model_checkpoint_final</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">final_model_path_mnw</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Ambil jumlah epoch terbaik dari hasil grid search</span>
+    <span class="n">best_epoch_from_search</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">best_params_mnw</span><span class="p">[</span><span class="s1">&#39;stopped_epoch&#39;</span><span class="p">])</span>
+
+    
+    <span class="c1"># Latih model final</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Memulai Pelatihan Model Final ---&quot;</span><span class="p">)</span>
+    <span class="n">history_final_mnw</span> <span class="o">=</span> <span class="n">final_model_mnw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">X_train_lstm_mnw</span><span class="p">,</span> <span class="n">y_train_mnw</span><span class="p">,</span>
+        <span class="c1"># epochs=EPOCHS_MAX,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="n">best_epoch_from_search</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">best_params_mnw</span><span class="p">[</span><span class="s1">&#39;batch_size&#39;</span><span class="p">]),</span>
+        <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val_lstm_mnw</span><span class="p">,</span> <span class="n">y_val_mnw</span><span class="p">),</span>
+        <span class="c1"># callbacks=[early_stopping_final, model_checkpoint_final],</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">model_checkpoint_final</span><span class="p">],</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Plot Grafik Kinerja Pelatihan</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Membuat Grafik Kinerja Pelatihan (Loss vs Epoch) ---&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_final_mnw</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training Loss (MSE)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_final_mnw</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation Loss (MSE)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafik Kinerja Pelatihan Model - Skenario Multivariat Non-Windowing&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss (Mean Squared Error)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">best_epoch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">history_final_mnw</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_epoch</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best Epoch = </span><span class="si">{</span><span class="n">best_epoch</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Muat kembali model terbaik yang disimpan</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Memuat model terbaik dari file: </span><span class="si">{</span><span class="n">final_model_path_mnw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">final_model_mnw</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span>
+        <span class="n">final_model_path_mnw</span><span class="p">,</span> 
+        <span class="n">custom_objects</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;mse&#39;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">()}</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model terbaik berhasil dimuat.&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: File hasil grid search &#39;</span><span class="si">{</span><span class="n">grid_search_results_file</span><span class="si">}</span><span class="s2">&#39; tidak ditemukan.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Harap jalankan blok kode pencarian hyperparameter terlebih dahulu untuk menghasilkan file ini.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Terjadi error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil grid search berhasil dimuat dari &#39;grid_search_results_multivariate_nonwindowing.csv&#39;
+
+--- Hyperparameter Terbaik Terpilih ---
+   combination  units  learning_rate  batch_size  dropout_rate  best_val_loss  stopped_epoch
+0         54.0  100.0           0.01        64.0           0.2       0.004455           43.0
+--------------------------------------------------
+
+Membangun model final dengan hyperparameter terbaik...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\experiment after testing - Copy\Code Penelitian new\.venv\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+</pre></div>
+</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_55"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ lstm_110 (<span style="color: #0087ff; text-decoration-color: #0087ff">LSTM</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">30</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)        │        <span style="color: #00af00; text-decoration-color: #00af00">48,400</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_110 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">30</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lstm_111 (<span style="color: #0087ff; text-decoration-color: #0087ff">LSTM</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">80,400</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_111 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_55 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">30</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">3,030</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">131,830</span> (514.96 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">131,830</span> (514.96 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Memulai Pelatihan Model Final ---
+Epoch 1/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 37ms/step - loss: 0.0201 - mse: 0.0201
+Epoch 1: val_loss improved from inf to 0.14299, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 50ms/step - loss: 0.0202 - mse: 0.0202 - val_loss: 0.1430 - val_mse: 0.1430
+Epoch 2/43
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 38ms/step - loss: 0.0215 - mse: 0.0215
+Epoch 2: val_loss improved from 0.14299 to 0.12923, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 42ms/step - loss: 0.0217 - mse: 0.0217 - val_loss: 0.1292 - val_mse: 0.1292
+Epoch 3/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0188 - mse: 0.0188
+Epoch 3: val_loss improved from 0.12923 to 0.11833, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 33ms/step - loss: 0.0190 - mse: 0.0190 - val_loss: 0.1183 - val_mse: 0.1183
+Epoch 4/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 30ms/step - loss: 0.0162 - mse: 0.0162
+Epoch 4: val_loss improved from 0.11833 to 0.04017, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 32ms/step - loss: 0.0162 - mse: 0.0162 - val_loss: 0.0402 - val_mse: 0.0402
+Epoch 5/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 29ms/step - loss: 0.0112 - mse: 0.0112
+Epoch 5: val_loss did not improve from 0.04017
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 31ms/step - loss: 0.0114 - mse: 0.0114 - val_loss: 0.0520 - val_mse: 0.0520
+Epoch 6/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 34ms/step - loss: 0.0117 - mse: 0.0117
+Epoch 6: val_loss improved from 0.04017 to 0.01527, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 37ms/step - loss: 0.0117 - mse: 0.0117 - val_loss: 0.0153 - val_mse: 0.0153
+Epoch 7/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 29ms/step - loss: 0.0703 - mse: 0.0703
+Epoch 7: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 31ms/step - loss: 0.0680 - mse: 0.0680 - val_loss: 0.1059 - val_mse: 0.1059
+Epoch 8/43
+<span class=" -Color -Color-Bold">32/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0204 - mse: 0.0204
+Epoch 8: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0203 - mse: 0.0203 - val_loss: 0.1008 - val_mse: 0.1008
+Epoch 9/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0234 - mse: 0.0234
+Epoch 9: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 30ms/step - loss: 0.0231 - mse: 0.0231 - val_loss: 0.0338 - val_mse: 0.0338
+Epoch 10/43
+<span class=" -Color -Color-Bold">32/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━━</span> <span class=" -Color -Color-Bold">0s</span> 29ms/step - loss: 0.0203 - mse: 0.0203
+Epoch 10: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 31ms/step - loss: 0.0213 - mse: 0.0213 - val_loss: 0.1098 - val_mse: 0.1098
+Epoch 11/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0282 - mse: 0.0282
+Epoch 11: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0282 - mse: 0.0282 - val_loss: 0.1098 - val_mse: 0.1098
+Epoch 12/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0316 - mse: 0.0316
+Epoch 12: val_loss did not improve from 0.01527
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 28ms/step - loss: 0.0315 - mse: 0.0315 - val_loss: 0.1431 - val_mse: 0.1431
+Epoch 13/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0213 - mse: 0.0213
+Epoch 13: val_loss improved from 0.01527 to 0.00799, saving model to final_model_multivariate_nonwindowing.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0213 - mse: 0.0213 - val_loss: 0.0080 - val_mse: 0.0080
+Epoch 14/43
+<span class=" -Color -Color-Bold">32/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0250 - mse: 0.0250
+Epoch 14: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 33ms/step - loss: 0.0246 - mse: 0.0246 - val_loss: 0.0218 - val_mse: 0.0218
+Epoch 15/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0302 - mse: 0.0302
+Epoch 15: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0296 - mse: 0.0296 - val_loss: 0.0571 - val_mse: 0.0571
+Epoch 16/43
+<span class=" -Color -Color-Bold">32/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0189 - mse: 0.0189
+Epoch 16: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0196 - mse: 0.0196 - val_loss: 0.1680 - val_mse: 0.1680
+Epoch 17/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0124 - mse: 0.0124
+Epoch 17: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0126 - mse: 0.0126 - val_loss: 0.0115 - val_mse: 0.0115
+Epoch 18/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0290 - mse: 0.0290
+Epoch 18: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 29ms/step - loss: 0.0293 - mse: 0.0293 - val_loss: 0.1900 - val_mse: 0.1900
+Epoch 19/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0137 - mse: 0.0137
+Epoch 19: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 40ms/step - loss: 0.0139 - mse: 0.0139 - val_loss: 0.0603 - val_mse: 0.0603
+Epoch 20/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 52ms/step - loss: 0.0345 - mse: 0.0345
+Epoch 20: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 54ms/step - loss: 0.0339 - mse: 0.0339 - val_loss: 0.0933 - val_mse: 0.0933
+Epoch 21/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0097 - mse: 0.0097
+Epoch 21: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 33ms/step - loss: 0.0098 - mse: 0.0098 - val_loss: 0.0495 - val_mse: 0.0495
+Epoch 22/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 30ms/step - loss: 0.0103 - mse: 0.0103
+Epoch 22: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 35ms/step - loss: 0.0102 - mse: 0.0102 - val_loss: 0.0404 - val_mse: 0.0404
+Epoch 23/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 35ms/step - loss: 0.0035 - mse: 0.0035
+Epoch 23: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 37ms/step - loss: 0.0036 - mse: 0.0036 - val_loss: 0.0408 - val_mse: 0.0408
+Epoch 24/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0024 - mse: 0.0024
+Epoch 24: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 33ms/step - loss: 0.0024 - mse: 0.0024 - val_loss: 0.0458 - val_mse: 0.0458
+Epoch 25/43
+<span class=" -Color -Color-Bold">32/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━━</span> <span class=" -Color -Color-Bold">0s</span> 48ms/step - loss: 0.0017 - mse: 0.0017
+Epoch 25: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 49ms/step - loss: 0.0017 - mse: 0.0017 - val_loss: 0.0504 - val_mse: 0.0504
+Epoch 26/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 40ms/step - loss: 0.0016 - mse: 0.0016
+Epoch 26: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 46ms/step - loss: 0.0017 - mse: 0.0017 - val_loss: 0.0280 - val_mse: 0.0280
+Epoch 27/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 40ms/step - loss: 0.0027 - mse: 0.0027
+Epoch 27: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 42ms/step - loss: 0.0029 - mse: 0.0029 - val_loss: 0.0342 - val_mse: 0.0342
+Epoch 28/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 35ms/step - loss: 0.0022 - mse: 0.0022
+Epoch 28: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 37ms/step - loss: 0.0023 - mse: 0.0023 - val_loss: 0.0443 - val_mse: 0.0443
+Epoch 29/43
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 45ms/step - loss: 0.0018 - mse: 0.0018
+Epoch 29: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 58ms/step - loss: 0.0018 - mse: 0.0018 - val_loss: 0.0527 - val_mse: 0.0527
+Epoch 30/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 57ms/step - loss: 0.0014 - mse: 0.0014
+Epoch 30: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 62ms/step - loss: 0.0015 - mse: 0.0015 - val_loss: 0.0449 - val_mse: 0.0449
+Epoch 31/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 43ms/step - loss: 0.0014 - mse: 0.0014
+Epoch 31: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 49ms/step - loss: 0.0014 - mse: 0.0014 - val_loss: 0.0265 - val_mse: 0.0265
+Epoch 32/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 101ms/step - loss: 0.0017 - mse: 0.0017
+Epoch 32: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 104ms/step - loss: 0.0018 - mse: 0.0018 - val_loss: 0.0121 - val_mse: 0.0121
+Epoch 33/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 59ms/step - loss: 0.0050 - mse: 0.0050
+Epoch 33: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 64ms/step - loss: 0.0050 - mse: 0.0050 - val_loss: 0.0529 - val_mse: 0.0529
+Epoch 34/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 37ms/step - loss: 0.0032 - mse: 0.0032
+Epoch 34: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 43ms/step - loss: 0.0033 - mse: 0.0033 - val_loss: 0.0853 - val_mse: 0.0853
+Epoch 35/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 56ms/step - loss: 0.0022 - mse: 0.0022
+Epoch 35: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 60ms/step - loss: 0.0023 - mse: 0.0023 - val_loss: 0.0483 - val_mse: 0.0483
+Epoch 36/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 46ms/step - loss: 0.0026 - mse: 0.0026
+Epoch 36: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 50ms/step - loss: 0.0026 - mse: 0.0026 - val_loss: 0.0107 - val_mse: 0.0107
+Epoch 37/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 33ms/step - loss: 0.0048 - mse: 0.0048
+Epoch 37: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 36ms/step - loss: 0.0049 - mse: 0.0049 - val_loss: 0.0731 - val_mse: 0.0731
+Epoch 38/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 35ms/step - loss: 0.0024 - mse: 0.0024
+Epoch 38: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 41ms/step - loss: 0.0025 - mse: 0.0025 - val_loss: 0.0970 - val_mse: 0.0970
+Epoch 39/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 64ms/step - loss: 0.0032 - mse: 0.0032
+Epoch 39: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 66ms/step - loss: 0.0033 - mse: 0.0033 - val_loss: 0.0258 - val_mse: 0.0258
+Epoch 40/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 44ms/step - loss: 0.0037 - mse: 0.0037
+Epoch 40: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 46ms/step - loss: 0.0038 - mse: 0.0038 - val_loss: 0.0139 - val_mse: 0.0139
+Epoch 41/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 38ms/step - loss: 0.0086 - mse: 0.0086
+Epoch 41: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 45ms/step - loss: 0.0086 - mse: 0.0086 - val_loss: 0.0990 - val_mse: 0.0990
+Epoch 42/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 39ms/step - loss: 0.0023 - mse: 0.0023
+Epoch 42: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 43ms/step - loss: 0.0025 - mse: 0.0025 - val_loss: 0.0975 - val_mse: 0.0975
+Epoch 43/43
+<span class=" -Color -Color-Bold">33/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 42ms/step - loss: 0.0041 - mse: 0.0041
+Epoch 43: val_loss did not improve from 0.00799
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 49ms/step - loss: 0.0043 - mse: 0.0043 - val_loss: 0.0161 - val_mse: 0.0161
+
+--- Membuat Grafik Kinerja Pelatihan (Loss vs Epoch) ---
+</pre></div>
+</div>
+<img alt="../_images/31dc34a87d20b912a03a5987b130e60defbf3a97e95e08ec523a6d824608a618.png" src="../_images/31dc34a87d20b912a03a5987b130e60defbf3a97e95e08ec523a6d824608a618.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memuat model terbaik dari file: final_model_multivariate_nonwindowing.h5
+Model terbaik berhasil dimuat.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Pastikan variabel dari blok sebelumnya sudah ada</span>
+<span class="k">if</span> <span class="s1">&#39;final_model_mnw&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;X_test_lstm_mnw&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Memulai Evaluasi Final, Prediksi, dan Analisis Error (Multivariat Non-Windowing) ---&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 1. Lakukan Prediksi dan Denormalisasi</span>
+        <span class="n">scaler_target_path</span> <span class="o">=</span> <span class="s1">&#39;../scaler_target.pkl&#39;</span>
+        <span class="n">scaler_target</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scaler_target_path</span><span class="p">)</span>
+        <span class="n">y_pred_scaled</span> <span class="o">=</span> <span class="n">final_model_mnw</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_lstm_mnw</span><span class="p">)</span>
+        <span class="n">y_pred_denorm</span> <span class="o">=</span> <span class="n">scaler_target</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred_scaled</span><span class="p">)</span>
+        <span class="n">y_test_denorm</span> <span class="o">=</span> <span class="n">scaler_target</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test_mnw</span><span class="p">)</span>
+        
+        <span class="c1"># 2. Hitung MSE Keseluruhan pada Data Uji</span>
+        <span class="c1"># mse_real_scale = mean_squared_error(y_test_denorm, y_pred_denorm)</span>
+        <span class="c1"># print(f&quot;\n- Test MSE Keseluruhan (Skala Asli USD^2): {mse_real_scale:,.2f}&quot;)</span>
+        <span class="n">mse_normalized</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_mnw</span><span class="p">,</span> <span class="n">y_pred_scaled</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Test MSE (Skala Ternormalisasi): </span><span class="si">{</span><span class="n">mse_normalized</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        
+        <span class="c1"># 3. Simpan dan Analisis Detail Prediksi per Sampel</span>
+        <span class="n">all_predictions_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test_lstm_mnw</span><span class="p">)):</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates_X_test_mnw</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">date_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">N_OUTPUT_DAYS</span><span class="p">)</span>
+            
+            <span class="n">sample_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                <span class="s1">&#39;Sample_Uji_ke&#39;</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s1">&#39;Hari_Prediksi_ke&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N_OUTPUT_DAYS</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;Tanggal&#39;</span><span class="p">:</span> <span class="n">date_range</span><span class="p">,</span>
+                <span class="s1">&#39;Harga_Aktual&#39;</span><span class="p">:</span> <span class="n">y_test_denorm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="s1">&#39;Harga_Prediksi&#39;</span><span class="p">:</span> <span class="n">y_pred_denorm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="p">})</span>
+            <span class="n">all_predictions_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_df</span><span class="p">)</span>
+            
+        <span class="n">all_predictions_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_predictions_list</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># REVISI: Hitung error kuadrat untuk MSE</span>
+        <span class="n">all_predictions_df</span><span class="p">[</span><span class="s1">&#39;Error_Kuadrat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_predictions_df</span><span class="p">[</span><span class="s1">&#39;Harga_Prediksi&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">all_predictions_df</span><span class="p">[</span><span class="s1">&#39;Harga_Aktual&#39;</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+        
+        <span class="n">output_predictions_file</span> <span class="o">=</span> <span class="s1">&#39;detailed_predictions_multivariate_nonwindowing.csv&#39;</span>
+        <span class="n">all_predictions_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_predictions_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Detail prediksi untuk </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test_lstm_mnw</span><span class="p">)</span><span class="si">}</span><span class="s2"> sampel disimpan ke &#39;</span><span class="si">{</span><span class="n">output_predictions_file</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 4. Analisis Rata-rata Error Kuadrat (MSE) per Hari Prediksi</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Analisis Rata-rata Error per Hari Prediksi (30 Hari Horizon) ---&quot;</span><span class="p">)</span>
+        <span class="c1"># REVISI: Menghitung MSE per hari</span>
+        <span class="n">mse_per_day</span> <span class="o">=</span> <span class="n">all_predictions_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Hari_Prediksi_ke&#39;</span><span class="p">)[</span><span class="s1">&#39;Error_Kuadrat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        
+        <span class="n">min_error_day</span> <span class="o">=</span> <span class="n">mse_per_day</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+        <span class="n">max_error_day</span> <span class="o">=</span> <span class="n">mse_per_day</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Prediksi paling akurat (MSE terendah) terjadi pada : Hari ke-</span><span class="si">{</span><span class="n">min_error_day</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Prediksi paling tidak akurat (MSE tertinggi) terjadi pada: Hari ke-</span><span class="si">{</span><span class="n">max_error_day</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Visualisasi Kurva Error</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">mse_per_day</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rata-rata Error Kuadrat (MSE) vs. Horizon Waktu Prediksi - Multivariat Non-Windowing&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hari Prediksi ke-&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Rata-rata Error Kuadrat (MSE) dalam USD^2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="c1"># 5. Visualisasi Grafik Sampel (seperti sebelumnya)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Visualisasi Grafik Sampel Prediksi vs Aktual ---&quot;</span><span class="p">)</span>
+        <span class="n">sample_indices_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test_lstm_mnw</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test_lstm_mnw</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">sample_index</span> <span class="ow">in</span> <span class="n">sample_indices_to_plot</span><span class="p">:</span>
+            <span class="n">plot_df</span> <span class="o">=</span> <span class="n">all_predictions_df</span><span class="p">[</span><span class="n">all_predictions_df</span><span class="p">[</span><span class="s1">&#39;Sample_Uji_ke&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sample_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_df</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">],</span> <span class="n">plot_df</span><span class="p">[</span><span class="s1">&#39;Harga_Aktual&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Harga Aktual&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_df</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">],</span> <span class="n">plot_df</span><span class="p">[</span><span class="s1">&#39;Harga_Prediksi&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Harga Prediksi&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Prediksi vs Aktual (30 Hari) - Sampel Uji ke-</span><span class="si">{</span><span class="n">sample_index</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> (Multivariat Non-Windowing)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Harga Bitcoin (USD)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Terjadi error pada proses evaluasi atau visualisasi: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model atau data uji tidak tersedia untuk dievaluasi.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses untuk Skenario Multivariat Non-Windowing Selesai.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Memulai Evaluasi Final, Prediksi, dan Analisis Error (Multivariat Non-Windowing) ---
+<span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 179ms/step
+- Test MSE (Skala Ternormalisasi): 0.012488
+- Detail prediksi untuk 69 sampel disimpan ke &#39;detailed_predictions_multivariate_nonwindowing.csv&#39;
+
+--- Analisis Rata-rata Error per Hari Prediksi (30 Hari Horizon) ---
+- Prediksi paling akurat (MSE terendah) terjadi pada : Hari ke-3
+- Prediksi paling tidak akurat (MSE tertinggi) terjadi pada: Hari ke-28
+</pre></div>
+</div>
+<img alt="../_images/aa5b5718138581b38af733ac61d204c6b9a21490ad327a2188beac630332c52e.png" src="../_images/aa5b5718138581b38af733ac61d204c6b9a21490ad327a2188beac630332c52e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Visualisasi Grafik Sampel Prediksi vs Aktual ---
+</pre></div>
+</div>
+<img alt="../_images/678b3f9973653dd72d0ec927a680bc6e6e675b948c3964fdb3b538b63c682bcb.png" src="../_images/678b3f9973653dd72d0ec927a680bc6e6e675b948c3964fdb3b538b63c682bcb.png" />
+<img alt="../_images/7dca86a8706c149019b97ff764e1d3726ac8fc4b6f6b0a464d8a5e71b59a1401.png" src="../_images/7dca86a8706c149019b97ff764e1d3726ac8fc4b6f6b0a464d8a5e71b59a1401.png" />
+<img alt="../_images/7bacad3e92b82741b874cb32758791027c968bc7bd27b919fb33b5e6a6b250b6.png" src="../_images/7bacad3e92b82741b874cb32758791027c968bc7bd27b919fb33b5e6a6b250b6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------
+Proses untuk Skenario Multivariat Non-Windowing Selesai.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simpan data rata-rata error per hari prediksi (MSE vs Horizon Waktu) ke CSV</span>
+<span class="n">mse_per_day</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;mse_per_day_multivariate_nonwindowing.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data rata-rata error per hari prediksi telah disimpan ke &#39;mse_per_day_multivariate_nonwindowing.csv&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data rata-rata error per hari prediksi telah disimpan ke &#39;mse_per_day_multivariate_nonwindowing.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Proyek"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

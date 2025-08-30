@@ -1,0 +1,4 @@
+# File: _config.yml
+
+execute:
+  execute_notebooks: "off"

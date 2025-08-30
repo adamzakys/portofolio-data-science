@@ -1,0 +1,2490 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek/Klasifikasi_Lulus';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Resume - [Nama Lengkap Anda]" href="../resume.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Jupyter Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Selamat Datang di Portofolio Saya!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tentang Saya</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume - [Nama Lengkap Anda]</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Proyek-Proyek Saya</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Proyek/Klasifikasi_Lulus.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-memuat-data">Import Library dan Memuat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data">Memuat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dan-pemahaman-data-eda">Eksplorasi dan Pemahaman Data (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dasar-dataframe">Informasi Dasar DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-nilai-kosong">Pengecekan Nilai Kosong</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-variabel-target">Analisis Variabel Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analisis">Data Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-nilai-akademik-pendaftar">Distribusi Nilai Akademik Pendaftar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-nilai-akademik-berdasarkan-status-kelulusan">Perbandingan Nilai Akademik Berdasarkan Status Kelulusan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#asal-provinsi-dan-program-studi-paling-populer">Asal Provinsi dan Program Studi Paling Populer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-dan-pembersihan-data">Preprocessing dan Pembersihan Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-feature-selection">Seleksi Fitur (Feature Selection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-nilai-kosong-pada-fitur-imputation">Penanganan Nilai Kosong pada Fitur (Imputation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-fitur-kategorikal">Encoding Fitur Kategorikal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembangunan-model-modeling">Pembangunan Model (Modeling)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemisahan-data-train-test-split">Pemisahan Data (Train-Test Split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-model-model-training">Pelatihan Model (Model Training)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik-klasifikasi">Analisis Metrik Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-penting-feature-importance">Analisis Fitur Penting (Feature Importance)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-kelulusan-mahasiswa-baru-menggunakan-machine-learning">
+<h1>Prediksi Kelulusan Mahasiswa Baru Menggunakan Machine Learning<a class="headerlink" href="#prediksi-kelulusan-mahasiswa-baru-menggunakan-machine-learning" title="Link to this heading">#</a></h1>
+<p>Proyek ini bertujuan untuk membangun sebuah model machine learning yang mampu memprediksi status kelulusan calon mahasiswa berdasarkan data pendaftaran SNMPTN 2018. Dengan menggunakan data historis, disini akan mengidentifikasi faktor-faktor kunci yang paling berpengaruh terhadap keberhasilan seorang siswa. Model yang akan dikembangkan adalah RandomForestClassifier, sebuah algoritma yang kuat untuk tugas klasifikasi. Tantangan utama dalam proyek ini adalah menangani data yang tidak seimbang (imbalanced data), di mana jumlah mahasiswa yang lulus jauh lebih sedikit daripada yang tidak lulus.</p>
+<section id="import-library-dan-memuat-data">
+<h2>Import Library dan Memuat Data<a class="headerlink" href="#import-library-dan-memuat-data" title="Link to this heading">#</a></h2>
+<p>mempersiapkan semua yang dibutuhkan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memuat-data">
+<h2>Memuat Data<a class="headerlink" href="#memuat-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Muat dataset dari URL</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/adamzakys/SourceDataset/refs/heads/main/Dataset_prediksi_kelulusan.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan 5 baris pertama</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-c7baa098-29a5-490c-988d-67c6e03a79dd" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nomor_pendaftaran</th>
+      <th>JK</th>
+      <th>bidikmisi</th>
+      <th>Sekolah</th>
+      <th>Kabupaten</th>
+      <th>Provinsi</th>
+      <th>Pilihan 1</th>
+      <th>Pilihan 2</th>
+      <th>Ranking Sekolah</th>
+      <th>Nilai Mapel UN</th>
+      <th>...</th>
+      <th>X5</th>
+      <th>X6</th>
+      <th>X7</th>
+      <th>X8</th>
+      <th>X9</th>
+      <th>XT</th>
+      <th>IP Sem 1</th>
+      <th>IP Sem 2</th>
+      <th>Predikat Semester 1</th>
+      <th>Predikat Semester 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4180000053</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMKN 1 TAMBUN SELATAN</td>
+      <td>Kab Bekasi</td>
+      <td>Jawa Barat</td>
+      <td>TEKNIK INFORMATIKA</td>
+      <td>MANAJEMEN</td>
+      <td>37</td>
+      <td>82.745854</td>
+      <td>...</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>7.50</td>
+      <td>70.524492</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4180000054</td>
+      <td>L</td>
+      <td>NaN</td>
+      <td>MAN RANCAH</td>
+      <td>Kab Ciamis</td>
+      <td>Jawa Barat</td>
+      <td>ILMU POLITIK</td>
+      <td>PENDIDIKAN LUAR SEKOLAH</td>
+      <td>50</td>
+      <td>81.033269</td>
+      <td>...</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.00</td>
+      <td>71.709826</td>
+      <td>3.5</td>
+      <td>3.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4180000057</td>
+      <td>L</td>
+      <td>NaN</td>
+      <td>SMAN 6 TASIKMALAYA</td>
+      <td>Kota Tasikmalaya</td>
+      <td>Jawa Barat</td>
+      <td>PENDIDIKAN GEOGRAFI</td>
+      <td>PENDIDIKAN LUAR SEKOLAH</td>
+      <td>182</td>
+      <td>81.278846</td>
+      <td>...</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>11.25</td>
+      <td>73.405190</td>
+      <td>3.6</td>
+      <td>3.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4180000086</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMAN 5 CIREBON</td>
+      <td>Kota Cirebon</td>
+      <td>Jawa Barat</td>
+      <td>KESEHATAN MASYARAKAT</td>
+      <td>AGRIBISNIS</td>
+      <td>152</td>
+      <td>81.254098</td>
+      <td>...</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>7.50</td>
+      <td>68.527561</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4180000137</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMAN 8 TASIKMALAYA</td>
+      <td>Kota Tasikmalaya</td>
+      <td>Jawa Barat</td>
+      <td>KESEHATAN MASYARAKAT</td>
+      <td>MANAJEMEN</td>
+      <td>187</td>
+      <td>80.576923</td>
+      <td>...</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>11.25</td>
+      <td>72.780220</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c7baa098-29a5-490c-988d-67c6e03a79dd')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c7baa098-29a5-490c-988d-67c6e03a79dd button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c7baa098-29a5-490c-988d-67c6e03a79dd');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-9c8e1585-9623-440b-9d9d-b686981cc0bb">
+      <button class="colab-df-quickchart" onclick="quickchart('df-9c8e1585-9623-440b-9d9d-b686981cc0bb')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-9c8e1585-9623-440b-9d9d-b686981cc0bb button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="eksplorasi-dan-pemahaman-data-eda">
+<h2>Eksplorasi dan Pemahaman Data (EDA)<a class="headerlink" href="#eksplorasi-dan-pemahaman-data-eda" title="Link to this heading">#</a></h2>
+<section id="informasi-dasar-dataframe">
+<h3>Informasi Dasar DataFrame<a class="headerlink" href="#informasi-dasar-dataframe" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 3587 entries, 0 to 3586
+Data columns (total 26 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   nomor_pendaftaran    3587 non-null   int64  
+ 1   JK                   3587 non-null   object 
+ 2   bidikmisi            1278 non-null   object 
+ 3   Sekolah              3587 non-null   object 
+ 4   Kabupaten            3587 non-null   object 
+ 5   Provinsi             3587 non-null   object 
+ 6   Pilihan 1            3587 non-null   object 
+ 7   Pilihan 2            2969 non-null   object 
+ 8   Ranking Sekolah      3587 non-null   int64  
+ 9   Nilai Mapel UN       3587 non-null   float64
+ 10  Lulus pada Prodi     744 non-null    object 
+ 11  Lulus Pilihan        744 non-null    object 
+ 12  X1                   3587 non-null   float64
+ 13  X2                   3587 non-null   float64
+ 14  X3                   3587 non-null   float64
+ 15  X4                   3587 non-null   int64  
+ 16  X5                   3587 non-null   float64
+ 17  X6                   3587 non-null   float64
+ 18  X7                   3587 non-null   float64
+ 19  X8                   3587 non-null   float64
+ 20  X9                   3587 non-null   float64
+ 21  XT                   3587 non-null   float64
+ 22  IP Sem 1             594 non-null    float64
+ 23  IP Sem 2             559 non-null    float64
+ 24  Predikat Semester 1  0 non-null      float64
+ 25  Predikat Semester 2  0 non-null      float64
+dtypes: float64(14), int64(3), object(9)
+memory usage: 728.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Total Data: Terdapat 3587 baris (entri) dan 26 kolom (fitur).</p>
+<p>Tipe Data:</p>
+<ul class="simple">
+<li><p>Kolom seperti JK, bidikmisi, Sekolah, dan lainnya memiliki tipe data object, yang menandakan data ini berisi teks (kategorikal) dan perlu diubah menjadi angka (encoding) sebelum diproses oleh model.</p></li>
+<li><p>Kolom lainnya adalah numerik (int64, float64) dan bisa langsung digunakan setelah pembersihan.</p></li>
+</ul>
+<p>Kolom lainnya adalah numerik (int64, float64) dan bisa langsung digunakan setelah pembersihan.</p>
+<ul class="simple">
+<li><p>Kolom seperti bidikmisi (1278 dari 3587 data terisi), Lulus Pilihan (744 terisi), serta IP Sem 1 dan IP Sem 2 memiliki banyak sekali nilai kosong. Ini mengonfirmasi bahwa kolom-kolom ini memerlukan penanganan khusus, baik dengan cara diisi (imputation) atau dihapus.</p></li>
+<li><p>Kolom Predikat Semester 1 dan Predikat Semester 2 sepenuhnya kosong (0 non-null) dan harus dihapus.</p></li>
+</ul>
+</section>
+<section id="pengecekan-nilai-kosong">
+<h3>Pengecekan Nilai Kosong<a class="headerlink" href="#pengecekan-nilai-kosong" title="Link to this heading">#</a></h3>
+<p>Menghitung jumlah nilai kosong (NaN) pada setiap kolom untuk merencanakan strategi imputasi atau penghapusan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>nomor_pendaftaran</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>JK</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>bidikmisi</th>
+      <td>2309</td>
+    </tr>
+    <tr>
+      <th>Sekolah</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Kabupaten</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Provinsi</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Pilihan 1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Pilihan 2</th>
+      <td>618</td>
+    </tr>
+    <tr>
+      <th>Ranking Sekolah</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Nilai Mapel UN</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Lulus pada Prodi</th>
+      <td>2843</td>
+    </tr>
+    <tr>
+      <th>Lulus Pilihan</th>
+      <td>2843</td>
+    </tr>
+    <tr>
+      <th>X1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X5</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X6</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X7</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X8</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>X9</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>XT</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>IP Sem 1</th>
+      <td>2993</td>
+    </tr>
+    <tr>
+      <th>IP Sem 2</th>
+      <td>3028</td>
+    </tr>
+    <tr>
+      <th>Predikat Semester 1</th>
+      <td>3587</td>
+    </tr>
+    <tr>
+      <th>Predikat Semester 2</th>
+      <td>3587</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
+</div>
+<p>Output ini merinci jumlah nilai kosong (NaN) untuk setiap kolom dalam dataset:</p>
+<ul class="simple">
+<li><p>bidikmisi (2309 kosong): Mayoritas data tidak memiliki informasi mengenai status bidikmisi. Ini perlu diisi, kemungkinan dengan asumsi “Tidak”.</p></li>
+<li><p>Pilihan 2 (618 kosong): Sejumlah siswa tidak mengisi pilihan kedua, yang merupakan informasi penting.</p></li>
+<li><p>Lulus pada Prodi &amp; Lulus Pilihan (2843 kosong): Ini adalah kolom target. Jumlah nilai kosong yang sama persis (2843) mengindikasikan bahwa baris-baris ini adalah untuk siswa yang tidak lulus pada seleksi.</p></li>
+<li><p>IP Sem 1 &amp; IP Sem 2 (2993 &amp; 3028 kosong): Sebagian besar data IP semester kosong. Ini menandakan data ini tidak dapat diandalkan untuk prediksi dan kemungkinan besar harus dibuang.</p></li>
+<li><p>Predikat Semester 1 &amp; 2 (3587 kosong): Seluruh kolom ini kosong, sehingga harus dihapus.</p></li>
+</ul>
+<p>Analisis ini memperkuat keputusan untuk menghapus kolom-kolom terkait hasil studi (IP dan Predikat) dan melakukan imputasi (pengisian nilai) pada kolom bidikmisi, Pilihan 2, dan kolom target Lulus Pilihan.</p>
+</section>
+<section id="analisis-variabel-target">
+<h3>Analisis Variabel Target<a class="headerlink" href="#analisis-variabel-target" title="Link to this heading">#</a></h3>
+<p>pada kolom Lulus Pilihan, yang merupakan variabel target. untuk memahami distribusi atau sebaran nilai pada kolom ini. Tujuannya adalah untuk melihat:</p>
+<ul class="simple">
+<li><p>Ada kategori apa saja di dalam kolom ini (misalnya: lulus di pilihan 1, lulus di pilihan 2, atau tidak lulus).</p></li>
+<li><p>Berapa jumlah mahasiswa untuk setiap kategori.</p></li>
+</ul>
+<p>Informasi ini krusial karena jika jumlah data di satu kategori jauh lebih banyak daripada yang lain (disebut imbalanced data), ini bisa memengaruhi bagaimana model belajar nantinya. pada kasus ini saya menggunakan value_counts(dropna=False) agar nilai kosong (NaN), yang dalam konteks ini kemungkinan besar berarti “tidak lulus”, juga ikut terhitung</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menganalisis distribusi nilai pada kolom &#39;Lulus Pilihan&#39;</span>
+<span class="c1"># dropna=False digunakan agar nilai NaN (yang tidak lulus) juga dihitung</span>
+<span class="n">distribusi_target</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas pada Variabel Target:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">distribusi_target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas pada Variabel Target:
+Lulus Pilihan
+NaN      2843
+pil_1     696
+pil_2      48
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Output tersebut menunjukkan distribusi data pada kolom Lulus Pilihan:</p>
+<ul class="simple">
+<li><p>NaN (2843 data): Terdapat 2.843 baris data yang tidak memiliki nilai (kosong) pada kolom Lulus Pilihan. Dalam konteks dataset ini, nilai NaN merepresentasikan mahasiswa yang tidak lulus pada pilihan pertama maupun kedua. Ini adalah kelas mayoritas.</p></li>
+<li><p>pil_1 (696 data): Terdapat 696 mahasiswa yang dinyatakan lulus pada pilihan pertama mereka.</p></li>
+<li><p>pil_2 (48 data): Terdapat 48 mahasiswa yang dinyatakan lulus pada pilihan kedua mereka. Ini adalah kelas minoritas.</p></li>
+</ul>
+<p>Data ini sangat tidak seimbang (imbalanced). Jumlah mahasiswa yang tidak lulus jauh lebih dominan dibandingkan yang lulus. Kondisi ini perlu menjadi perhatian khusus karena dapat menyebabkan model cenderung lebih baik dalam memprediksi kelas mayoritas (tidak lulus) dan buruk dalam memprediksi kelas minoritas (lulus pilihan 2).</p>
+</section>
+<section id="data-analisis">
+<h3>Data Analisis<a class="headerlink" href="#data-analisis" title="Link to this heading">#</a></h3>
+<section id="distribusi-nilai-akademik-pendaftar">
+<h4>Distribusi Nilai Akademik Pendaftar<a class="headerlink" href="#distribusi-nilai-akademik-pendaftar" title="Link to this heading">#</a></h4>
+<p>Visualisasi ini bertujuan untuk memahami sebaran nilai akademik kunci dari seluruh calon mahasiswa, yaitu Nilai Mapel UN dan Ranking Sekolah.</p>
+<p>Dengan melihat histogram, dapat diidentifikasi apakah mayoritas pendaftar memiliki nilai UN yang tinggi atau rendah, serta apakah mereka cenderung berasal dari sekolah dengan ranking unggulan atau tidak. Ini memberikan gambaran umum mengenai kualitas akademik dari kohort pendaftar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Memuat ulang data asli untuk EDA</span>
+<span class="n">file_path_analisis</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/adamzakys/SourceDataset/refs/heads/main/Dataset_prediksi_kelulusan.csv&#39;</span>
+<span class="n">df_eda</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_analisis</span><span class="p">)</span>
+
+<span class="c1"># Membuat subplot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1"># Histogram untuk Nilai Mapel UN</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Nilai Mapel UN&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Nilai Mapel UN&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai Mapel UN&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Pendaftar&#39;</span><span class="p">)</span>
+
+<span class="c1"># Histogram untuk Ranking Sekolah</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Ranking Sekolah&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Ranking Sekolah&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ranking Sekolah&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Pendaftar&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;distribusi_akademik.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grafik &#39;distribusi_akademik.png&#39; berhasil disimpan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grafik &#39;distribusi_akademik.png&#39; berhasil disimpan.
+</pre></div>
+</div>
+<img alt="../_images/6572169b327161a84bc59da1f4ed78cbd5896fe54e85c30cdbb8cf19c1323dac.png" src="../_images/6572169b327161a84bc59da1f4ed78cbd5896fe54e85c30cdbb8cf19c1323dac.png" />
+</div>
+</div>
+</section>
+<section id="perbandingan-nilai-akademik-berdasarkan-status-kelulusan">
+<h4>Perbandingan Nilai Akademik Berdasarkan Status Kelulusan<a class="headerlink" href="#perbandingan-nilai-akademik-berdasarkan-status-kelulusan" title="Link to this heading">#</a></h4>
+<p>Visualisasi ini membandingkan sebaran Nilai Mapel UN antara mahasiswa yang lulus (pilihan 1 &amp; 2) dan yang tidak lulus.</p>
+<p>Box plot ini secara visual akan menunjukkan apakah terdapat perbedaan signifikan antara nilai UN pendaftar yang diterima dan yang tidak. Jika kotak untuk kelompok “Lulus” berada jauh lebih tinggi daripada kelompok “Tidak Lulus”, ini menjadi bukti kuat bahwa nilai UN adalah faktor prediktor yang penting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Melakukan rekayasa variabel target untuk visualisasi</span>
+<span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Tidak Lulus&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;pil_1&#39;</span><span class="p">:</span> <span class="s1">&#39;Lulus Pilihan 1&#39;</span><span class="p">,</span> <span class="s1">&#39;pil_2&#39;</span><span class="p">:</span> <span class="s1">&#39;Lulus Pilihan 2&#39;</span><span class="p">})</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Nilai Mapel UN&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_eda</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tidak Lulus&#39;</span><span class="p">,</span> <span class="s1">&#39;Lulus Pilihan 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Lulus Pilihan 2&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan Nilai Mapel UN Berdasarkan Status Kelulusan&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Status Kelulusan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai Mapel UN&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;perbandingan_nilai_kelulusan.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grafik &#39;perbandingan_nilai_kelulusan.png&#39; berhasil disimpan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-2146983565.py:2: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_eda[&#39;Lulus Pilihan&#39;].fillna(&#39;Tidak Lulus&#39;, inplace=True)
+/tmp/ipython-input-2146983565.py:7: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(x=&#39;Lulus Pilihan&#39;, y=&#39;Nilai Mapel UN&#39;, data=df_eda, palette=&#39;viridis&#39;, order=[&#39;Tidak Lulus&#39;, &#39;Lulus Pilihan 1&#39;, &#39;Lulus Pilihan 2&#39;])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grafik &#39;perbandingan_nilai_kelulusan.png&#39; berhasil disimpan.
+</pre></div>
+</div>
+<img alt="../_images/c904aad2ff3a39f74bbed83977d81d0ed5564c508184e8b54ce9165486d597b2.png" src="../_images/c904aad2ff3a39f74bbed83977d81d0ed5564c508184e8b54ce9165486d597b2.png" />
+</div>
+</div>
+</section>
+<section id="asal-provinsi-dan-program-studi-paling-populer">
+<h4>Asal Provinsi dan Program Studi Paling Populer<a class="headerlink" href="#asal-provinsi-dan-program-studi-paling-populer" title="Link to this heading">#</a></h4>
+<p>Visualisasi ini menampilkan 10 provinsi dengan pendaftar terbanyak dan 10 program studi yang paling banyak dipilih sebagai pilihan pertama.</p>
+<p>Grafik ini memberikan wawasan demografis dan minat pendaftar. Informasi ini dapat digunakan untuk memahami dari mana saja basis pendaftar terkuat berasal dan program studi apa yang memiliki tingkat persaingan paling tinggi berdasarkan jumlah peminat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># 10 Provinsi Teratas</span>
+<span class="n">top_10_provinsi</span> <span class="o">=</span> <span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Provinsi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_10_provinsi</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">top_10_provinsi</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;10 Provinsi dengan Pendaftar Terbanyak pada data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Pendaftar&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Provinsi&#39;</span><span class="p">)</span>
+
+<span class="c1"># 10 Program Studi Pilihan 1 Teratas</span>
+<span class="n">top_10_prodi</span> <span class="o">=</span> <span class="n">df_eda</span><span class="p">[</span><span class="s1">&#39;Pilihan 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_10_prodi</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">top_10_prodi</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;10 Program Studi Pilihan 1 Terpopuler&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Pendaftar&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Program Studi&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;demografi_pilihan_pendaftar.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grafik &#39;demografi_pilihan_pendaftar.png&#39; berhasil disimpan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-1864554879.py:5: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=top_10_provinsi.values, y=top_10_provinsi.index, ax=axes[0], palette=&#39;plasma&#39;)
+/tmp/ipython-input-1864554879.py:12: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=top_10_prodi.values, y=top_10_prodi.index, ax=axes[1], palette=&#39;magma&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grafik &#39;demografi_pilihan_pendaftar.png&#39; berhasil disimpan.
+</pre></div>
+</div>
+<img alt="../_images/7f882720b3fd3afe3d88b1f799f1d2054161f26a62c536fbc1ad0bd4a1add53f.png" src="../_images/7f882720b3fd3afe3d88b1f799f1d2054161f26a62c536fbc1ad0bd4a1add53f.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="preprocessing-dan-pembersihan-data">
+<h2>Preprocessing dan Pembersihan Data<a class="headerlink" href="#preprocessing-dan-pembersihan-data" title="Link to this heading">#</a></h2>
+<p>Model machine learning tidak bisa memproses data teks seperti ‘pil_1’ atau nilai kosong (NaN). Oleh karena itu, kolom target Lulus Pilihan perlu diubah menjadi format numerik yang bisa dipahami oleh algoritma. Proses ini terdiri dari dua tahap:</p>
+<ol class="arabic simple">
+<li><p>Mengisi Nilai Kosong: Nilai NaN, yang sebelumnya diidentifikasi sebagai mahasiswa “tidak lulus”, akan diisi terlebih dahulu. Untuk kejelasan, nilai ini akan diubah menjadi string ‘tidak_lulus’.</p></li>
+<li><p>Konversi ke Numerik (Mapping): Setelah semua baris memiliki nilai, kategori-kategori tersebut akan dipetakan ke angka. Konvensi yang umum adalah:</p></li>
+</ol>
+<ul class="simple">
+<li><p>‘tidak_lulus’ -&gt; 0</p></li>
+<li><p>‘pil_1’ -&gt; 1</p></li>
+<li><p>‘pil_2’ -&gt; 2</p></li>
+</ul>
+<p>Dengan begitu, variabel target menjadi sepenuhnya numerik dan siap untuk digunakan dalam pemodelan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengisi nilai NaN dengan &#39;tidak_lulus&#39; (sintaks yang disarankan)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;tidak_lulus&#39;</span><span class="p">)</span>
+
+<span class="c1"># Membuat pemetaan (mapping) dari teks ke angka</span>
+<span class="n">mapping_lulus</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tidak_lulus&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;pil_1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;pil_2&#39;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="c1"># Mengaplikasikan mapping ke kolom &#39;Lulus Pilihan&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping_lulus</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan hasil setelah rekayasa untuk verifikasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Variabel Target Setelah Rekayasa (Revisi):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Variabel Target Setelah Rekayasa (Revisi):
+Lulus Pilihan
+0    2843
+1     696
+2      48
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kolom target Lulus Pilihan telah berhasil di-encode secara numerik. Kategori string (‘tidak_lulus’, ‘pil_1’, ‘pil_2’) telah dipetakan ke tipe data integer (0, 1, 2) sehingga siap digunakan untuk pemodelan. Distribusi kelas tetap sama: 2843 sampel untuk kelas 0, 696 untuk kelas 1, dan 48 untuk kelas 2.</p>
+<section id="seleksi-fitur-feature-selection">
+<h3>Seleksi Fitur (Feature Selection)<a class="headerlink" href="#seleksi-fitur-feature-selection" title="Link to this heading">#</a></h3>
+<p>Pada tahap ini, dilakukan pemilihan fitur (kolom) yang akan digunakan untuk melatih model. Tidak semua kolom dalam dataset relevan atau pantas untuk digunakan. Beberapa kolom perlu dibuang untuk alasan berikut:</p>
+<ul class="simple">
+<li><p>Tidak Relevan: Kolom seperti nomor_pendaftaran adalah unik untuk setiap mahasiswa dan tidak memiliki pola yang bisa dipelajari oleh model untuk prediksi.</p></li>
+<li><p>Kebocoran Data (Data Leakage): Kolom seperti Lulus pada Prodi, IP Sem 1, IP Sem 2, dan predikat semester adalah informasi yang baru ada setelah mahasiswa diterima dan mulai berkuliah. Menggunakan fitur ini sama saja dengan memberikan “contekan” pada model, karena tujuannya adalah memprediksi kelulusan sebelum mereka masuk.</p></li>
+</ul>
+<p>Oleh karena itu, kolom-kolom tersebut akan dihapus dari dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daftar kolom yang akan dihapus</span>
+<span class="n">columns_to_drop</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;nomor_pendaftaran&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Lulus pada Prodi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IP Sem 1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IP Sem 2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Predikat Semester 1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Predikat Semester 2&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Menghapus kolom dari DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_to_drop</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan 5 baris pertama dan info untuk memeriksa hasilnya</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data setelah beberapa kolom dihapus:&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data setelah beberapa kolom dihapus:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-3bb87734-803c-4241-8ee8-6ad88f5e79a7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>JK</th>
+      <th>bidikmisi</th>
+      <th>Sekolah</th>
+      <th>Kabupaten</th>
+      <th>Provinsi</th>
+      <th>Pilihan 1</th>
+      <th>Pilihan 2</th>
+      <th>Ranking Sekolah</th>
+      <th>Nilai Mapel UN</th>
+      <th>Lulus Pilihan</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>X4</th>
+      <th>X5</th>
+      <th>X6</th>
+      <th>X7</th>
+      <th>X8</th>
+      <th>X9</th>
+      <th>XT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMKN 1 TAMBUN SELATAN</td>
+      <td>Kab Bekasi</td>
+      <td>Jawa Barat</td>
+      <td>TEKNIK INFORMATIKA</td>
+      <td>MANAJEMEN</td>
+      <td>37</td>
+      <td>82.745854</td>
+      <td>0</td>
+      <td>10.308333</td>
+      <td>10.343232</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>7.50</td>
+      <td>70.524492</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>L</td>
+      <td>NaN</td>
+      <td>MAN RANCAH</td>
+      <td>Kab Ciamis</td>
+      <td>Jawa Barat</td>
+      <td>ILMU POLITIK</td>
+      <td>PENDIDIKAN LUAR SEKOLAH</td>
+      <td>50</td>
+      <td>81.033269</td>
+      <td>2</td>
+      <td>10.064033</td>
+      <td>10.129159</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.00</td>
+      <td>71.709826</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>L</td>
+      <td>NaN</td>
+      <td>SMAN 6 TASIKMALAYA</td>
+      <td>Kota Tasikmalaya</td>
+      <td>Jawa Barat</td>
+      <td>PENDIDIKAN GEOGRAFI</td>
+      <td>PENDIDIKAN LUAR SEKOLAH</td>
+      <td>182</td>
+      <td>81.278846</td>
+      <td>1</td>
+      <td>10.355911</td>
+      <td>10.159856</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>11.25</td>
+      <td>73.405190</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMAN 5 CIREBON</td>
+      <td>Kota Cirebon</td>
+      <td>Jawa Barat</td>
+      <td>KESEHATAN MASYARAKAT</td>
+      <td>AGRIBISNIS</td>
+      <td>152</td>
+      <td>81.254098</td>
+      <td>0</td>
+      <td>10.243750</td>
+      <td>10.156762</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>7.50</td>
+      <td>68.527561</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>P</td>
+      <td>NaN</td>
+      <td>SMAN 8 TASIKMALAYA</td>
+      <td>Kota Tasikmalaya</td>
+      <td>Jawa Barat</td>
+      <td>KESEHATAN MASYARAKAT</td>
+      <td>MANAJEMEN</td>
+      <td>187</td>
+      <td>80.576923</td>
+      <td>0</td>
+      <td>10.169643</td>
+      <td>10.072115</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>11.25</td>
+      <td>72.780220</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3bb87734-803c-4241-8ee8-6ad88f5e79a7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-3bb87734-803c-4241-8ee8-6ad88f5e79a7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3bb87734-803c-4241-8ee8-6ad88f5e79a7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-1a0da192-57b3-4d08-a5d8-f99c4e062161">
+      <button class="colab-df-quickchart" onclick="quickchart('df-1a0da192-57b3-4d08-a5d8-f99c4e062161')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-1a0da192-57b3-4d08-a5d8-f99c4e062161 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="penanganan-nilai-kosong-pada-fitur-imputation">
+<h3>Penanganan Nilai Kosong pada Fitur (Imputation)<a class="headerlink" href="#penanganan-nilai-kosong-pada-fitur-imputation" title="Link to this heading">#</a></h3>
+<p>Setelah membuang kolom yang tidak relevan, langkah selanjutnya adalah memeriksa kembali apakah masih ada nilai kosong (missing values) pada fitur-fitur yang tersisa. Mengetahui kolom mana dan berapa banyak data yang kosong sangat penting untuk menentukan strategi pengisian (imputasi) yang tepat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung jumlah nilai kosong untuk setiap kolom</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan kolom yang memiliki nilai kosong (lebih dari 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah nilai kosong pada setiap fitur:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_values</span><span class="p">[</span><span class="n">missing_values</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah nilai kosong pada setiap fitur:
+bidikmisi    2309
+Pilihan 2     618
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penanganan Nilai Kosong pada Fitur (Imputation) - Lanjutan</p>
+<p>Setiap kolom akan ditangani dengan strategi yang berbeda sesuai dengan maknanya:</p>
+<ul class="simple">
+<li><p>bidikmisi: Nilai kosong (NaN) pada kolom ini kemungkinan besar berarti mahasiswa tersebut tidak mendaftar program beasiswa Bidikmisi. Oleh karena itu, nilai kosong ini akan diisi dengan angka 0 (merepresentasikan “tidak”).</p></li>
+<li><p>Pilihan 2: Nilai kosong di sini berarti calon mahasiswa tidak memilih program studi pilihan kedua. Nilai ini akan diisi dengan teks ‘TIDAK MEMILIH’ untuk menjadikannya sebuah kategori tersendiri.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengisi nilai kosong pada kolom &#39;bidikmisi&#39; dengan 0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;bidikmisi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bidikmisi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Mengisi nilai kosong pada kolom &#39;Pilihan 2&#39; dengan &#39;TIDAK MEMILIH&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pilihan 2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pilihan 2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;TIDAK MEMILIH&#39;</span><span class="p">)</span>
+
+<span class="c1"># Memeriksa kembali apakah masih ada nilai kosong yang tersisa di seluruh dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total nilai kosong setelah imputasi:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total nilai kosong setelah imputasi: 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encoding-fitur-kategorikal">
+<h3>Encoding Fitur Kategorikal<a class="headerlink" href="#encoding-fitur-kategorikal" title="Link to this heading">#</a></h3>
+<p>Model machine learning hanya dapat memproses angka, bukan teks. Oleh karena itu, semua kolom yang masih berisi data teks (kategorikal) seperti ‘JK’, ‘Sekolah’, dan ‘Pilihan 1’ harus diubah menjadi format numerik.</p>
+<p>Metode yang akan digunakan adalah Binary Encoding. Metode ini efisien untuk kolom yang memiliki sangat banyak kategori unik (seperti nama sekolah atau kabupaten) karena tidak menghasilkan terlalu banyak kolom baru, sehingga menghemat memori dan waktu komputasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">category_encoders</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">category_encoders</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ce</span>
+
+<span class="c1"># Mengidentifikasi kolom-kolom yang bertipe objek (teks)</span>
+<span class="n">categorical_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># Membuat instance BinaryEncoder</span>
+<span class="c1"># drop_invariant=True digunakan untuk menghapus kolom yang tidak memiliki variasi (semua nilainya sama)</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">ce</span><span class="o">.</span><span class="n">BinaryEncoder</span><span class="p">(</span><span class="n">cols</span><span class="o">=</span><span class="n">categorical_cols</span><span class="p">,</span> <span class="n">drop_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Melakukan encoding pada data</span>
+<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan 5 baris pertama dari data yang sudah di-encode</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data setelah proses encoding:&quot;</span><span class="p">)</span>
+<span class="n">df_encoded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting category_encoders
+  Downloading category_encoders-2.8.1-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: numpy&gt;=1.14.0 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (2.0.2)
+Requirement already satisfied: pandas&gt;=1.0.5 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (2.2.2)
+Requirement already satisfied: patsy&gt;=0.5.1 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (1.0.1)
+Requirement already satisfied: scikit-learn&gt;=1.6.0 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (1.6.1)
+Requirement already satisfied: scipy&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (1.16.1)
+Requirement already satisfied: statsmodels&gt;=0.9.0 in /usr/local/lib/python3.12/dist-packages (from category_encoders) (0.14.5)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas&gt;=1.0.5-&gt;category_encoders) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas&gt;=1.0.5-&gt;category_encoders) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas&gt;=1.0.5-&gt;category_encoders) (2025.2)
+Requirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn&gt;=1.6.0-&gt;category_encoders) (1.5.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn&gt;=1.6.0-&gt;category_encoders) (3.6.0)
+Requirement already satisfied: packaging&gt;=21.3 in /usr/local/lib/python3.12/dist-packages (from statsmodels&gt;=0.9.0-&gt;category_encoders) (25.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0.5-&gt;category_encoders) (1.17.0)
+Downloading category_encoders-2.8.1-py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">85.7/85.7 kB</span> <span class=" -Color -Color-Red">2.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: category_encoders
+Successfully installed category_encoders-2.8.1
+Data setelah proses encoding:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-3aeb2330-858b-4f53-9285-0c76c1072981" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>JK_0</th>
+      <th>JK_1</th>
+      <th>bidikmisi_0</th>
+      <th>bidikmisi_1</th>
+      <th>Sekolah_0</th>
+      <th>Sekolah_1</th>
+      <th>Sekolah_2</th>
+      <th>Sekolah_3</th>
+      <th>Sekolah_4</th>
+      <th>Sekolah_5</th>
+      <th>...</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>X4</th>
+      <th>X5</th>
+      <th>X6</th>
+      <th>X7</th>
+      <th>X8</th>
+      <th>X9</th>
+      <th>XT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10.308333</td>
+      <td>10.343232</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>10.343232</td>
+      <td>7.50</td>
+      <td>70.524492</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10.064033</td>
+      <td>10.129159</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.129159</td>
+      <td>10.00</td>
+      <td>71.709826</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10.355911</td>
+      <td>10.159856</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>10.159856</td>
+      <td>11.25</td>
+      <td>73.405190</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10.243750</td>
+      <td>10.156762</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>10.156762</td>
+      <td>7.50</td>
+      <td>68.527561</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10.169643</td>
+      <td>10.072115</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>10.072115</td>
+      <td>11.25</td>
+      <td>72.780220</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 49 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3aeb2330-858b-4f53-9285-0c76c1072981')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-3aeb2330-858b-4f53-9285-0c76c1072981 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3aeb2330-858b-4f53-9285-0c76c1072981');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-e1b4149d-a332-4154-9341-3e9c6ac0be34">
+      <button class="colab-df-quickchart" onclick="quickchart('df-e1b4149d-a332-4154-9341-3e9c6ac0be34')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-e1b4149d-a332-4154-9341-3e9c6ac0be34 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Kolom-kolom teks asli (seperti ‘JK’, ‘Sekolah’, ‘Kabupaten’, dll.) telah digantikan oleh serangkaian kolom baru (contoh: JK_0, JK_1, Sekolah_0, dst.). Kolom-kolom baru ini berisi representasi biner (0 dan 1) dari data teks sebelumnya.</p>
+<p>Hasil akhirnya adalah sebuah DataFrame dengan 49 kolom yang seluruhnya berisi data numerik. Dengan ini, tahap Preprocessing dan Pembersihan Data telah selesai, dan dataset kini sepenuhnya siap untuk tahap pembangunan model.</p>
+</section>
+</section>
+<section id="pembangunan-model-modeling">
+<h2>Pembangunan Model (Modeling)<a class="headerlink" href="#pembangunan-model-modeling" title="Link to this heading">#</a></h2>
+<section id="pemisahan-data-train-test-split">
+<h3>Pemisahan Data (Train-Test Split)<a class="headerlink" href="#pemisahan-data-train-test-split" title="Link to this heading">#</a></h3>
+<p>Sebelum model dilatih, dataset perlu dibagi menjadi dua bagian:</p>
+<ul class="simple">
+<li><p>Data Latih (Training Data): Sebagian besar data (80%) yang akan digunakan untuk “mengajari” model dalam mengenali pola.</p></li>
+<li><p>Data Uji (Testing Data): Sisa data (20%) yang disimpan dan akan digunakan untuk menguji seberapa baik model yang sudah dilatih dalam membuat prediksi pada data yang belum pernah dilihat sebelumnya.</p></li>
+</ul>
+<p>Pemisahan ini penting untuk evaluasi yang objektif. Parameter stratify digunakan untuk memastikan proporsi setiap kelas kelulusan (0, 1, dan 2) pada data latih dan data uji sama dengan proporsi pada dataset aslinya. Ini sangat krusial untuk kasus data tidak seimbang.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Memisahkan fitur (X) dan target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="s1">&#39;Lulus Pilihan&#39;</span><span class="p">]</span>
+
+<span class="c1"># Membagi data menjadi 80% data latih dan 20% data uji</span>
+<span class="c1"># stratify=y memastikan proporsi kelas target tetap sama di kedua set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1"># Menampilkan ukuran (shape) dari setiap set data untuk verifikasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran X_train:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran X_test:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran y_train:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran y_test:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran X_train: (2869, 48)
+Ukuran X_test: (718, 48)
+Ukuran y_train: (2869,)
+Ukuran y_test: (718,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Output tersebut menunjukkan bahwa dataset telah berhasil dibagi. Data latih (X_train) terdiri dari 2869 baris data, dan data uji (X_test) terdiri dari 718 baris, sesuai dengan rasio pembagian 80:20. Jumlah 48 kolom fitur konsisten di kedua set data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 2. Tampilkan distribusi kelas SEBELUM SMOTE (untuk perbandingan)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas sebelum SMOTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># 3. Inisialisasi SMOTE</span>
+<span class="c1"># random_state untuk memastikan hasilnya bisa direproduksi</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 4. Terapkan SMOTE hanya pada data latih</span>
+<span class="c1"># Ini akan membuat sampel baru untuk kelas 1 dan 2 agar jumlahnya sama dengan kelas 0</span>
+<span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 5. Tampilkan distribusi kelas SETELAH SMOTE</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi kelas setelah SMOTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train_smote</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># 6. Verifikasi ukuran data latih yang baru</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ukuran X_train setelah SMOTE:&quot;</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imbalanced-learn in /usr/local/lib/python3.12/dist-packages (0.14.0)
+Requirement already satisfied: numpy&lt;3,&gt;=1.25.2 in /usr/local/lib/python3.12/dist-packages (from imbalanced-learn) (2.0.2)
+Requirement already satisfied: scipy&lt;2,&gt;=1.11.4 in /usr/local/lib/python3.12/dist-packages (from imbalanced-learn) (1.16.1)
+Requirement already satisfied: scikit-learn&lt;2,&gt;=1.4.2 in /usr/local/lib/python3.12/dist-packages (from imbalanced-learn) (1.6.1)
+Requirement already satisfied: joblib&lt;2,&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from imbalanced-learn) (1.5.1)
+Requirement already satisfied: threadpoolctl&lt;4,&gt;=2.0.0 in /usr/local/lib/python3.12/dist-packages (from imbalanced-learn) (3.6.0)
+Distribusi kelas sebelum SMOTE:
+Lulus Pilihan
+0    2274
+1     557
+2      38
+Name: count, dtype: int64
+
+Distribusi kelas setelah SMOTE:
+Lulus Pilihan
+0    2274
+1    2274
+2    2274
+Name: count, dtype: int64
+
+Ukuran X_train setelah SMOTE: (6822, 48)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pelatihan-model-model-training">
+<h3>Pelatihan Model (Model Training)<a class="headerlink" href="#pelatihan-model-model-training" title="Link to this heading">#</a></h3>
+<p>Pada langkah ini, model machine learning akan “belajar” dari data latih (X_train dan y_train) yang sudah di siapkan. Algoritma yang digunakan adalah RandomForestClassifier.</p>
+<p>Karena data tidak seimbang, sebuah parameter penting yaitu class_weight=’balanced’ akan digunakan. Parameter ini secara otomatis akan memberikan bobot yang lebih tinggi pada kelas minoritas (lulus pilihan 1 dan 2). Tujuannya adalah agar model tidak mengabaikan kelas-kelas tersebut dan lebih sensitif dalam memprediksinya, meskipun jumlah datanya sedikit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># Membuat instance model RandomForestClassifier</span>
+<span class="c1"># class_weight=&#39;balanced&#39; untuk menangani data tidak seimbang</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">)</span>
+
+<span class="c1"># Melatih model menggunakan data latih</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model RandomForestClassifier berhasil dilatih.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model RandomForestClassifier berhasil dilatih.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="evaluasi-model">
+<h2>Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h2>
+<section id="analisis-metrik-klasifikasi">
+<h3>Analisis Metrik Klasifikasi<a class="headerlink" href="#analisis-metrik-klasifikasi" title="Link to this heading">#</a></h3>
+<p>Tahap evaluasi ini bertujuan untuk mengukur performa model pada data uji—data yang belum pernah “dilihat” sebelumnya. Pertama, menggunakan model yang sudah dilatih untuk membuat prediksi pada X_test.</p>
+<p>Selanjutnya, hasil prediksi tersebut akan dibandingkan dengan jawaban yang sebenarnya (y_test) menggunakan Classification Report. Laporan ini akan menampilkan metrik-metrik penting:</p>
+<ul class="simple">
+<li><p>Precision: Tingkat akurasi dari prediksi yang dibuat. Dari semua yang diprediksi sebagai kelas X, berapa persen yang benar?</p></li>
+<li><p>Recall (Sensitivity): Kemampuan model untuk menemukan kembali data dari suatu kelas. Dari semua data asli kelas X, berapa persen yang berhasil ditemukan?</p></li>
+<li><p>F1-Score: Rata-rata harmonik dari Precision dan Recall. Metrik ini sangat berguna untuk data tidak seimbang.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># Membuat prediksi pada data uji</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Menghasilkan dan menampilkan classification report</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tidak Lulus (0)&#39;</span><span class="p">,</span> <span class="s1">&#39;Lulus Pil 1 (1)&#39;</span><span class="p">,</span> <span class="s1">&#39;Lulus Pil 2 (2)&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Laporan Hasil Klasifikasi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Laporan Hasil Klasifikasi:
+                 precision    recall  f1-score   support
+
+Tidak Lulus (0)       0.94      0.95      0.94       569
+Lulus Pil 1 (1)       0.77      0.78      0.78       139
+Lulus Pil 2 (2)       0.00      0.00      0.00        10
+
+       accuracy                           0.90       718
+      macro avg       0.57      0.58      0.57       718
+   weighted avg       0.89      0.90      0.90       718
+</pre></div>
+</div>
+</div>
+</div>
+<p>Laporan ini menyajikan metrik evaluasi kinerja model Random Forest Classifier pada data uji, setelah model dilatih menggunakan data latih yang telah diseimbangkan dengan metode SMOTE.</p>
+<ul class="simple">
+<li><p>Performa pada Kelas Mayoritas (Tidak Lulus): Model menunjukkan kinerja yang sangat tinggi untuk kelas Tidak Lulus (0). Dengan nilai F1-Score sebesar 0.94, model ini sangat efektif dan dapat diandalkan dalam mengidentifikasi mahasiswa yang tidak lulus.</p></li>
+<li><p>Performa pada Kelas Minoritas (Lulus Pil 1): Untuk kelas Lulus Pil 1 (1), model menunjukkan kinerja yang moderat dengan F1-Score 0.78. Nilai ini merefleksikan keseimbangan antara precision (0.77) dan recall (0.78), yang mengindikasikan bahwa model cukup mampu mengidentifikasi mahasiswa yang lulus di pilihan pertama.</p></li>
+<li><p>Performa pada Kelas Minoritas Ekstrem (Lulus Pil 2): Model sepenuhnya gagal untuk mengidentifikasi kelas Lulus Pil 2 (2). Seluruh metrik evaluasi—precision, recall, dan f1-score—menunjukkan nilai 0.00. Hal ini menandakan bahwa tidak ada satu pun prediksi yang benar untuk kelas ini, yang disebabkan oleh jumlah sampel yang sangat terbatas dalam dataset.</p></li>
+</ul>
+<p>Secara keseluruhan, akurasi sebesar 90% bersifat menyesatkan (misleading) karena didominasi oleh keberhasilan model dalam memprediksi kelas mayoritas, sementara menyembunyikan kegagalan total pada kelas minoritas ekstrem.</p>
+</section>
+<section id="analisis-fitur-penting-feature-importance">
+<h3>Analisis Fitur Penting (Feature Importance)<a class="headerlink" href="#analisis-fitur-penting-feature-importance" title="Link to this heading">#</a></h3>
+<p>Setiap pohon keputusan dalam algoritma Random Forest menghitung seberapa besar kontribusi setiap fitur dalam mengurangi impurity atau kesalahan prediksi. Feature Importance adalah rata-rata dari kontribusi tersebut di semua pohon.</p>
+<p>Dengan memvisualisasikan fitur-fitur terpenting, kita dapat melihat faktor apa saja (misalnya, ranking sekolah, nilai mapel, atau pilihan prodi) yang paling berpengaruh menurut model dalam menentukan kelulusan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Mendapatkan skor kepentingan fitur dari model</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># Membuat DataFrame untuk memudahkan visualisasi</span>
+<span class="n">feature_importance_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;importance&#39;</span><span class="p">:</span> <span class="n">importances</span>
+<span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Membuat plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;importance&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;feature&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">feature_importance_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="c1"># Mengambil 15 fitur teratas</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;15 Fitur Paling Penting Menurut Model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Skor Kepentingan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fitur&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Menyesuaikan layout agar tidak terpotong</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;feature_importance.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grafik &#39;feature_importance.png&#39; berhasil disimpan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-3103375209.py:15: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grafik &#39;feature_importance.png&#39; berhasil disimpan.
+</pre></div>
+</div>
+<img alt="../_images/7070e7946c2e339d57731c49e6cc3715e406afb5a0b93d3bfdb685128eb2ee50.png" src="../_images/7070e7946c2e339d57731c49e6cc3715e406afb5a0b93d3bfdb685128eb2ee50.png" />
+</div>
+</div>
+<p>Diagram ini mengilustrasikan tingkat kepentingan (importance) dari setiap fitur dalam proses pengambilan keputusan model Random Forest. Skor kepentingan mengukur seberapa besar kontribusi sebuah fitur dalam mengurangi ketidakmurnian (impurity) di seluruh pohon keputusan yang dibangun.</p>
+<ul class="simple">
+<li><p>Fitur Paling Berpengaruh: Hasil analisis menunjukkan bahwa serangkaian fitur yang tidak teridentifikasi, yaitu X1, X2, XT, X3, X5, dan X4, merupakan prediktor dengan pengaruh paling signifikan terhadap hasil prediksi model.</p></li>
+<li><p>Fitur Lainnya: Fitur yang dapat diinterpretasikan seperti Nilai Mapel UN dan Ranking Sekolah juga memiliki kontribusi, namun skor kepentingannya jauh lebih rendah dibandingkan dengan fitur-fitur ‘X’.</p></li>
+<li><p>Keterbatasan Interpretasi: Ketergantungan model yang sangat tinggi pada fitur-fitur ‘X’ yang tidak diketahui maknanya menjadi sebuah keterbatasan fundamental. Meskipun fitur-fitur ini kuat secara prediktif, ketidakmampuan untuk menginterpretasikannya menjadikan model ini sebagai “kotak hitam” (black box). Hal ini menimbulkan tantangan dalam memvalidasi logika di balik keputusan model dan membangun kepercayaan terhadap hasilnya.</p></li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Proyek"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../resume.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Resume - [Nama Lengkap Anda]</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-memuat-data">Import Library dan Memuat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data">Memuat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dan-pemahaman-data-eda">Eksplorasi dan Pemahaman Data (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dasar-dataframe">Informasi Dasar DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-nilai-kosong">Pengecekan Nilai Kosong</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-variabel-target">Analisis Variabel Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analisis">Data Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-nilai-akademik-pendaftar">Distribusi Nilai Akademik Pendaftar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-nilai-akademik-berdasarkan-status-kelulusan">Perbandingan Nilai Akademik Berdasarkan Status Kelulusan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#asal-provinsi-dan-program-studi-paling-populer">Asal Provinsi dan Program Studi Paling Populer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-dan-pembersihan-data">Preprocessing dan Pembersihan Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-feature-selection">Seleksi Fitur (Feature Selection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-nilai-kosong-pada-fitur-imputation">Penanganan Nilai Kosong pada Fitur (Imputation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-fitur-kategorikal">Encoding Fitur Kategorikal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembangunan-model-modeling">Pembangunan Model (Modeling)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemisahan-data-train-test-split">Pemisahan Data (Train-Test Split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-model-model-training">Pelatihan Model (Model Training)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik-klasifikasi">Analisis Metrik Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-penting-feature-importance">Analisis Fitur Penting (Feature Importance)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

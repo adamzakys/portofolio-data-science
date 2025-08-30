@@ -1,0 +1,11 @@
+# Konfigurasi daftar isi untuk website portofolio
+format: jb-book
+root: intro
+parts:
+  - caption: Tentang Saya
+    chapters:
+      - file: resume
+
+  - caption: Proyek-Proyek Saya
+    chapters:
+      - file: Proyek/Klasifikasi_Lulus
